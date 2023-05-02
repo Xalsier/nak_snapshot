@@ -1,9 +1,4 @@
-window.addEventListener('load', async () => {
-  events = await fetchEvents();
-  eventColors = await fetchEventColors();
-  currentDate = new Date();
-  updateCalendar(currentDate);
-});
+window.addEventListener('load', async () => {events = await fetchEvents();eventColors = await fetchEventColors();currentDate = new Date();updateCalendar(currentDate);});
 const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay();
 const isPastDate = (year, month, day) => new Date(year, month, day) < new Date();
 const isToday = (year, month, day) => new Date(year, month, day).toDateString() === new Date().toDateString();

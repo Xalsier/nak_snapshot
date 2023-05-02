@@ -18,7 +18,29 @@ document.addEventListener("DOMContentLoaded", () => {changeWindow(1);
 for (let i = 2; i <= NUMBER_OF_WINDOWS; i++) {
 document.querySelector(`#window${i} .window-content`).style.display = 'none';}});
 function enableDisableJavascript(activeWindowNumber) {
-const scripts = {1: '/js/calendar.js',2: '/js/novel.js',3: '/js/codex.js',4: '/js/pachinko.js',};
-for (let i = 1; i <= NUMBER_OF_WINDOWS; i++) {
-if (i === activeWindowNumber) {const scriptElement = document.querySelector(`script[src="${scripts[i]}"]`);
-if (!scriptElement) {const newScript = document.createElement('script');newScript.src = scripts[i];document.body.appendChild(newScript);}}}}
+    const scripts = {
+      1: '/js/calendar.js',
+      2: '/js/novel.js',
+      3: '/js/codex.js',
+      4: '/js/pac_app.js',
+    };
+  
+    for (let i = 1; i <= NUMBER_OF_WINDOWS; i++) {
+      if (i === activeWindowNumber) {
+        const scriptElement = document.querySelector(`script[src="${scripts[i]}"]`);
+  
+        if (!scriptElement) {
+          const newScript = document.createElement('script');
+          newScript.src = scripts[i];
+  
+          // Add the module type for pac_app.js
+          if (i === 4) {
+            newScript.type = 'module';
+          }
+  
+          document.body.appendChild(newScript);
+        }
+      }
+    }
+  }
+  

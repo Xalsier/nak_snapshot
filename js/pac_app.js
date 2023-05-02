@@ -1,3 +1,5 @@
+import { Pockets, drawHoles } from '/js/pac_modu/pac_poc.js';
+import { Pins } from '/js/pac_modu/pac_pin.js'; // Add this line
 const canvas = document.getElementById('pachinkoCanvas');
 const ctx = canvas.getContext('2d');
 const ballRadius = 2;
@@ -22,56 +24,16 @@ const font = '16px Arial';
 const gravity = 0.1;
 let score = 50;
 let balls = [];
-function createPegs() {
-  const pegs = [];
-  for (let i = 0; i < pegCountRows; i++) {
-    pegs[i] = [];
-    for (let j = 0; j <= i; j++) {
-      pegs[i][j] = {
-        x: (j + 1) * pegSpacingX + (pegSpacingX / 2) * (i % 2),
-        y: (i + 1) * pegSpacingY,
-        vibration: 0,
-      };
-    }
-  }
-  return pegs;
-}
-function drawFence(x, y) {
-  ctx.beginPath();
-  ctx.fillStyle = 'brown';
-  ctx.fillRect(x - fenceWidth/2, y - fenceHeight/2 + 20, fenceWidth, fenceHeight);
-  ctx.closePath();
-}
-function drawFences() {
-  for (let i = 0; i < holeCount - 1; i++) {
-    const x = (i + 1) * holeSpacing;
-    const y = canvas.height - 10;
-    drawFence(x, y);
-  }
-}
-function createHoles() {
-  const holes = [];
-  for (let i = 0; i < holeCount; i++) {
-    const holeType = i % 2 === 0 ? 'false' : 'real';
-    holes[i] = {
-      x: (i + 1) * holeSpacing,
-      y: canvas.height - 10,
-      width: 40,
-      height: 10,
-      type: holeType,
-    };
-  }
-  return holes;
-}
-const pegs = createPegs();
-const holes = createHoles();
+const pins = new Pins(canvas.width, pegCountRows, canvas.height); // Add this line
+const pegs = pins.pegs; // Add this line
+const pockets = new Pockets(canvas.width, holeCount, canvas.height);
+const holes = pockets.getHoles();
 function drawSperm(ball) {
   ctx.beginPath();
   ctx.arc(ball.x, ball.y, ballRadius, 0, Math.PI * 2);
   ctx.fillStyle = 'white';
   ctx.fill();
   ctx.closePath();
-
   const prevPositions = ball.prevPositions.slice().reverse();
   for (let i = 0; i < prevPositions.length - 1; i++) {
     const p1 = prevPositions[i];
@@ -85,42 +47,6 @@ function drawSperm(ball) {
     ctx.stroke();
   }
 }
-
-function drawPeg(x, y, vibration) {
-  ctx.beginPath();
-  ctx.arc(x, y + vibration, pegRadius, 0, Math.PI * 2);
-  ctx.fillStyle = 'brown';
-  ctx.fill();
-  ctx.closePath();
-}
-function drawPegs() {
-  for (let i = 0; i < pegCountRows; i++) {
-    for (let j = 0; j <= i; j++) {
-      const peg = pegs[i][j];
-      drawPeg(peg.x, peg.y, peg.vibration);
-      peg.vibration *= (1 - pegVibrationDecay);
-    }
-  }
-}
-function drawHole(x, y, width, height) {
-  ctx.beginPath();
-  ctx.fillStyle = 'black';
-  ctx.fillRect(x, y, width, height);
-  ctx.closePath();}
-function drawFalseHole(x, y, width, height) {
-  ctx.beginPath();
-  ctx.fillStyle = 'red';
-  ctx.fillRect(x, y, width, height);
-  ctx.closePath();}
-function drawHoles() {
-  for (let i = 0; i < holeCount; i++) {
-    if (holes[i].type === 'real') {drawHole(holes[i].x, holes[i].y, holes[i].width, holes[i].height);
-    } else {drawFalseHole(holes[i].x, holes[i].y, holes[i].width, holes[i].height);}}}
-function drawBottomBorder() {
-  ctx.beginPath();
-  ctx.fillStyle = 'grey';
-  ctx.fillRect(0, canvas.height - 10, canvas.width, 10);
-  ctx.closePath();}
 function drawScore() {
   ctx.font = font;
   ctx.fillStyle = scoreColor;
@@ -185,13 +111,15 @@ function updateBall(ball) {
   ball.x += ball.speedX;
   ball.y += ball.speedY;
   ball.speedY += gravity;}
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  balls.forEach(drawSperm); // Use drawSperm instead of drawBall
-  balls.forEach(updateBall);
-  balls.forEach(checkCollisions);
-  drawPegs(), drawHoles(), drawFences(), drawScore();
-  requestAnimationFrame(draw);}
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    balls.forEach(drawSperm); // Use drawSperm instead of drawBall
+    balls.forEach(updateBall);
+    balls.forEach(checkCollisions);
+    pins.drawPegs(ctx); // Update this line
+    drawHoles(ctx, holes), drawScore(); // Remove drawFences() from here
+    requestAnimationFrame(draw);
+  }
 canvas.addEventListener('click', function (event) {
 const multiplier = event.shiftKey ? 5 : 1;
 if (score >= 10 * multiplier) {for (let i = 0; i < multiplier; i++) {score -= 10;resetBall();}}});

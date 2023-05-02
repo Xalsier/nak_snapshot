@@ -1,0 +1,18 @@
+chapters:
+  path: "/md/chapters"
+  volumes:
+    1:
+      items:
+        - title: "Chapter 001"
+          file: "test.md"
+        - title: "Chapter 002"
+          file: "kora.md"
+pages:
+  path: "/md/pages/"
+  collections:
+    Profiles:
+      items:
+        - title: "Sera"
+          file: "sera.md"
+        - title: "Nester"
+          file: "nester.md"

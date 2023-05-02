@@ -1,0 +1,115 @@
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.blink {
+  animation: blink 1s infinite;
+}
+.light {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: 50%;
+  translate: -40px -5px;
+  animation: blink infinite; /* Ensure this line is using the 'blink' animation */
+}
+@keyframes vibrate {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-1px, 1px);
+  }
+  40% {
+    transform: translate(1px, -1px);
+  }
+  60% {
+    transform: translate(-1px, -1px);
+  }
+  80% {
+    transform: translate(1px, 1px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+.vibrate {
+  animation: vibrate 0.3s infinite;
+}
+#calendar-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#previous-month,
+#next-month {
+  height: 100%;
+  width: 40px;
+  border: none;
+  background: none;
+  font-size: 30px;
+  color: #ff4d4d;
+}
+#previous-month:hover,
+#next-month:hover {
+  color: #7b2525;
+}
+#calendar {
+  display: inline-block;
+  padding: 20px;
+  background: transparent;
+  text-align: center;
+  width: 100%;
+}
+.calendar-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr [col-start]);
+  gap: 10px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+.calendar-day {
+  background-color: #ff4d4d;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  width: calc(100% - 10px);
+  padding-top: calc(100% - 10px);
+  position: relative;
+  transition: transform 0.3s ease;
+  color: #000000;
+}
+.calendar-day > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.calendar-day:hover {
+  transform: translateY(3px);
+}
+.calendar-weekday {
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  visibility: visible;
+}
+.empty {
+  background-color: transparent;
+}
+.past {
+  background-color: #270000;
+  color:#e0e0e076;
+}
+.today {
+  background-color: #ff4d4d;
+  color: black;
+}

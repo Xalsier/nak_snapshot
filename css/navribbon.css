@@ -1,0 +1,107 @@
+nav.ribbon {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  height: 25%;
+  opacity: 1;
+  z-index: 5;
+  position: fixed;
+  left: 50%; /* change left to 50% */
+  transform: translateX(-50%);
+  translate: 170px 0px;
+  top: 0px;
+  background-color: #100505;
+  }
+  nav.ribbon .dropbtn {
+    background-color: #000000;
+    color: #ffffff00;
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  nav.ribbon .dropbtn:hover {
+    background-color: #e60000;
+  }
+  
+  nav.ribbon .dropdown-content {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); /* Change the y-offset to positive to drop the content down */
+    z-index: 1;
+    right: 0;
+    top: 0px; /* Change bottom to top and add a value to adjust the distance between the ribbon and the content */
+  }
+  
+  nav.ribbon .dropdown-content a {
+    display: block;
+    text-align: left;
+    padding-left: 10px;
+    text-decoration: none;
+    color: #ff4d4d;
+  }
+  
+  nav.ribbon .dropdown-content a:hover {
+    background-color: #220000;
+  }
+  
+  nav.ribbon:hover .dropdown-content {
+    display: block;
+  }
+  
+  nav.ribbon .dropdown-content a.calendar::before {
+    content: "\25CF";
+    margin-right: 8px;
+    animation-name: rainbow;
+    animation-timing-function: ease;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    left: 0;
+  }
+  
+  @keyframes rainbow {
+    0% {
+      color: red;
+    }
+    16% {
+      color: orange;
+    }
+    32% {
+      color: yellow;
+    }
+    48% {
+      color: green;
+    }
+    64% {
+      color: blue;
+    }
+    80% {
+      color: indigo;
+    }
+    100% {
+      color: violet;
+    }
+  }
+  
+    
+    nav.ribbon .dropdown-content a.webnovel::before {
+    content: "\25CF";
+    color: #ff60e4;
+    margin-right: 8px;
+    }
+    nav.ribbon .dropdown-content a.codex::before {
+        content: "\25CF";
+        color: #55fc55;
+        margin-right: 8px;
+        }
+        
+        nav.ribbon .dropdown-content a.yiff::before {
+        content: "\25CF";
+        color: #7070ff;
+        margin-right: 8px;
+        }

@@ -30,10 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
 function enableDisableJavascript(activeWindowNumber) {
   // Use a Map instead of an object
   const scripts = new Map([
-    [1, '../js/calendar.js'],
-    [2, '../js/novel.js'],
-    [3, '../js/codex.js'],
-    [4, '../js/pac_app.js'],
+    [1, '/js/calendar.js'],
+    [2, '/js/novel.js'],
+    [3, '/js/codex.js'],
+    [4, '/js/pac_app.js'],
   ]);
 
   // Use Map.prototype.forEach instead of for loop

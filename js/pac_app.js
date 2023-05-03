@@ -1,4 +1,4 @@
-import { Pockets, drawHoles } from '/js/pac_modu/pac_poc.js';import { Pins } from '/js/pac_modu/pac_pin.js';
+import { Pockets, drawHoles } from '../js/pac_modu/pac_poc.js';import { Pins } from '../js/pac_modu/pac_pin.js';
 const canvas = document.getElementById('pachinkoCanvas');
 const ctx = canvas.getContext('2d');
 const ballRadius = 2;

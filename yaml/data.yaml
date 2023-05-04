@@ -1,5 +1,5 @@
 chapters:
-  path: "https://nakioku.com/nak_snapshot/md/chapters"
+  path: "https://xalsier.github.io/nak_snapshot/md/chapters"
   volumes:
     1:
       items:
@@ -8,7 +8,7 @@ chapters:
         - title: "Chapter 002"
           file: "kora.md"
 pages:
-  path: "https://nakioku.com/nak_snapshot/md/pages"
+  path: "https://xalsier.github.io/nak_snapshot/md/pages"
   collections:
     Profiles:
       items:

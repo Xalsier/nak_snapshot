@@ -13,7 +13,7 @@ function fetchAndPopulate(yamlData, selectorId, filterKey, filterValue) {
       } else if (filterKey === 'collections') {path = data.pages.path;items = data.pages.collections[filterValue].items;}
       populateSelect({ path, items }, selectorId);});}
 if (document.getElementById('collection-list')) {
-  fetch('yaml/data.yaml')
+  fetch('./yaml/data.yaml')
     .then((response) => response.text())
     .then((yamlText) => jsyaml.load(yamlText))
     .then((data) => {

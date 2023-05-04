@@ -101,7 +101,7 @@ function findEvent(events, year, month, day) {
 }
 async function fetchEvents() {
   try {
-    const response = await fetch('events.csv');
+    const response = await fetch('./events.csv');
     const data = await response.text();
     const lines = data.split('\n');
     const events = {};
@@ -119,7 +119,7 @@ async function fetchEvents() {
 }
 async function fetchEventColors() {
   try {
-    const response = await fetch('events.csv');
+    const response = await fetch('./events.csv');
     const data = await response.text();
     const lines = data.split('\n');
     const eventColors = {};

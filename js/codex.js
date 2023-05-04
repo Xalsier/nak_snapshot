@@ -7,7 +7,7 @@ function populateSelect(yamlData, selectorId) {
     option.text = item.title;
     if (item.key) {option.setAttribute('data-key', item.key);}selector.appendChild(option);});}
 function fetchAndPopulate(yamlData, selectorId, filterKey, filterValue) {
-  fetch('yaml/data.yaml').then((response) => response.text()).then((yamlText) => jsyaml.load(yamlText)).then((data) => {
+  fetch('./yaml/data.yaml').then((response) => response.text()).then((yamlText) => jsyaml.load(yamlText)).then((data) => {
       let path, items = [];
       if (filterKey === 'volumes') {path = data.chapters.path;items = data.chapters.volumes[filterValue].items;
       } else if (filterKey === 'collections') {path = data.pages.path;items = data.pages.collections[filterValue].items;}
@@ -25,7 +25,7 @@ if (document.getElementById('collection-list')) {
         document.getElementById('collection-list').appendChild(option);});
       fetchAndPopulate(data.pages, 'page-list', 'collections', collectionList[0]);});
   document.getElementById('collection-list').addEventListener('change', function () {const selectedCollection = this.value;
-    fetch('yaml/data.yaml').then((response) => response.text()).then((yamlText) => jsyaml.load(yamlText)).then((data) => {fetchAndPopulate(data.pages, 'page-list', 'collections', selectedCollection);});});}
+    fetch('./yaml/data.yaml').then((response) => response.text()).then((yamlText) => jsyaml.load(yamlText)).then((data) => {fetchAndPopulate(data.pages, 'page-list', 'collections', selectedCollection);});});}
 if (document.getElementById('page-list')) {
   const pageSelector = document.getElementById('page-list');
   pageSelector.addEventListener('change', function () {

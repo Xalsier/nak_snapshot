@@ -7,7 +7,7 @@ function populateSelect(yamlData, selectorId) {
     option.text = item.title;
     if (item.key) {option.setAttribute('data-key', item.key);}selector.appendChild(option);});}
 function fetchAndPopulate(yamlData, selectorId, filterKey, filterValue) {
-  fetch('../nak_snapshot/yaml/data.yaml').then((response) => response.text()).then((yamlText) => jsyaml.load(yamlText)).then((data) => {
+  fetch('../yaml/data.yaml').then((response) => response.text()).then((yamlText) => jsyaml.load(yamlText)).then((data) => {
       let path, items = [];
       if (filterKey === 'volumes') {
         path = data.chapters.path;
@@ -20,7 +20,7 @@ function fetchAndPopulate(yamlData, selectorId, filterKey, filterValue) {
         items = data.chapters.volumes[filterValue].items;}
       populateSelect({ path, items }, selectorId);});}
 if (document.getElementById('volume-list')) {
-  fetch('../nak_snapshot/yaml/data.yaml').then((response) => response.text()).then((yamlText) => jsyaml.load(yamlText)).then((data) => {
+  fetch('../yaml/data.yaml').then((response) => response.text()).then((yamlText) => jsyaml.load(yamlText)).then((data) => {
       const volumeList = Object.keys(data.chapters.volumes);
       volumeList.forEach((volume) => {
         const option = document.createElement('option');

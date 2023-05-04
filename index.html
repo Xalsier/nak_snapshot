@@ -1,6 +1,5 @@
-<!DOCTYPE html><html lang="en-JP"><head>
-    <title>Na'kioku</title>
-    <link rel="icon" type="image/x-icon" id="favicon">
+<!DOCTYPE html><html lang="en-JP"><head><title>Na'kioku</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./ass/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Webnovel for the Island of Lost Memories">
@@ -11,38 +10,34 @@
     <link rel="stylesheet" href="./css/navribbon.css">
     <link rel="stylesheet" href="./css/theme.css">
     <link rel="stylesheet" href="./css/wiki.css">
-    <script src="./lib/markdown-it.min.js"></script>
-    <script src="./lib/d3.v6.min.js"></script>
-    <script src="./lib/js-yaml.min.js"></script>
-    <script src="./favicon.js"></script></head><body><header><h1>Na'kioku</h1></header>
-  <nav class="ribbon">
-    <button class="dropbtn">Bookmark</button>
-    <div class="dropdown-content">
-      <a href="#window1" id="button1" onclick="changeWindow(1, event)" class="calendar">カレンダー</a>
-      <a href="#window2" id="button2" onclick="changeWindow(2, event)" class="webnovel">ラノベ</a>
-      <a href="#window3" id="button3" onclick="changeWindow(3, event)" class="codex">ウィキ</a>
-      <a href="#window4" id="button4" onclick="changeWindow(4, event)" class="pachinko">パチンコ</a></div></nav>
-  <section id="window1" class="window"><div class="tab" id="calendar-month-year"></div>
-    <div class="window-content">
-      <div id="calendar-navigation"></div>
-      <button id="previous-month">&lt;</button>
-      <div id="calendar"></div>
-      <button id="next-month">&gt;</button></div></section>
+    <script src="./js/lib/markdown-it.min.js"></script>
+    <script src="./js/lib/d3.v6.min.js"></script>
+    <script src="./js/lib/js-yaml.min.js"></script>
+    <script src="./js/main.js"></script></head><body><header><h1>Na'kioku</h1></header>
+  <nav class="ribbon"><button class="dropbtn">Bookmark</button><div class="dropdown-content">
+    <a href="#window1" id="button1" onclick="changeWindow(1, event)" class="calendar"><h3>カレンダー</h3></a>
+    <a href="#window2" id="button2" onclick="changeWindow(2, event)" class="webnovel"><h3>ラノベ</h3></a>
+    <a href="#window3" id="button3" onclick="changeWindow(3, event)" class="codex"><h3>ウィキ</h3></a>
+    <a href="#window4" id="button4" onclick="changeWindow(4, event)" class="pachinko"><h3>パチンコ</h3></a></div></nav>
+  <section id="window1" class="window"><div class="tab" id="calendar-month-year"></div><div class="window-content">
+    <div id="calendar-navigation"></div>
+    <button id="previous-month">&lt;</button>
+    <div id="calendar"></div>
+    <button id="next-month">&gt;</button></div></section>
   <section id="window2" class="window"><div id="chapter-selector" class="tab">
-      <label for="volume-list">巻</label><select id="volume-list"></select>
-      <label for="chapter-list">章</label><select id="chapter-list"></select></div>
+    <label for="volume-list">巻</label><select id="volume-list"></select>
+    <label for="chapter-list">章</label><select id="chapter-list"></select></div>
     <div class="window-content"><div id="chapter-content" class="main-container"></div></div></section>
   <section id="window3" class="window"><div id="page-selector" class="tab">
-      <label for="collection-list">まとめ</label><select id="collection-list"></select>
-      <label for="page-list">ページ</label><select id="page-list"></select></div>
+    <label for="collection-list">まとめ</label><select id="collection-list"></select>
+    <label for="page-list">ページ</label><select id="page-list"></select></div>
     <div class="window-content"><div id="page-content" class="main-container"></div></div></section>
-    <section id="window4" class="window"><div class="tab"><p>パチンコ</p></div>
-      <div class="window-content">
-        <canvas id="leftCanvas" width="30" height="300">&lt;</canvas>
-        <canvas id="pachinkoCanvas" width="300" height="300"></canvas>
-        <canvas id="rightCanvas" width="30" height="300">&gt;</canvas>
-      </div></section>   
-<footer><div><p>PLACEHOLDER_TEXT</p><p>Na'kioku © 2023 Xalsier Kitsune. All rights reserved.</p>
-<a href="https://twitter.com/Xalsier" target="_blank"><img src="./ass/twitter.png" alt="Twitter" width="32" height="32"></a>
-<a href="https://discord.gg/uzPGC2k3kp" target="_blank"><img src="./ass/discord.png" alt="Discord" width="32" height="32"></a>
-</div></footer><script src="./spa_app.js"></script></body></html>
+  <section id="window4" class="window"><div class="tab"><p>パチンコ</p></div>
+    <div class="window-content">
+      <canvas id="leftCanvas" width="30" height="300">&lt;</canvas>
+      <canvas id="pachinkoCanvas" width="300" height="300"></canvas>
+      <canvas id="rightCanvas" width="30" height="300">&gt;</canvas></div></section>   
+  <footer><div><p>PLACEHOLDER_TEXT</p><p>Na'kioku © 2023 Xalsier Kitsune. All rights reserved.</p>
+    <a href="https://twitter.com/Xalsier" target="_blank"><img src="./ass/twitter.png" alt="Twitter" width="32" height="32"></a>
+    <a href="https://discord.gg/uzPGC2k3kp" target="_blank"><img src="./ass/discord.png" alt="Discord" width="32" height="32"></a>
+</div></footer></body></html>

@@ -12,6 +12,9 @@ const holeCount = 20;
 const holeScores = [2, 3, 5, 5, 10, 10, 5, 5, 3, 2];
 const pegVibrationAmplitude = 0.5;
 const gravity = 0.1;
+const baseCooldownTime = 14 * 1000; // 14 seconds
+const window2Multiplier = 2;
+const window3Multiplier = 4;
 let score = 50;
 let balls = [];
 const pins = new Pins(canvas.width, pegCountRows, canvas.height);
@@ -22,10 +25,32 @@ const leftCanvas = document.getElementById('leftCanvas');
 const leftCtx = leftCanvas.getContext('2d');
 const rightCanvas = document.getElementById('rightCanvas');
 const rightCtx = rightCanvas.getContext('2d');
+let breakTaken = false;
 let ballLimit = 3;
 let ballsLeft = 3;
 let ballRefillTime = 7000;
 let lastBallRefill = Date.now();
+let cooldownTimer = 0;
+let cooldownMultiplier = 0;
+let cooldownResetTime = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+let lastCooldownReset = Date.now();
+function updateCooldownTimerDisplay() {
+  const timerElement = document.getElementById("cooldown-timer");
+  const windowNumber = window.location.hash.slice(-1);
+  const multiplier = windowNumber === "3" ? window3Multiplier
+                   : windowNumber === "2" ? window2Multiplier
+                   : 1;
+
+  if (!breakTaken && ballsLeft === 0) {
+    timerElement.textContent = "Take a break";
+    breakTaken = true;
+  } else if (cooldownTimer > 0) {
+    timerElement.textContent = `${Math.ceil(cooldownTimer / (1000 * multiplier))}s`;
+  } else {
+    timerElement.textContent = "";
+  }
+}
+
 function drawHighScoreMeter() {
   const meterHeight = (score / 100) * leftCanvas.height;
   leftCtx.clearRect(0, 0, leftCanvas.width, leftCanvas.height);
@@ -95,12 +120,21 @@ function applyImpulse(ball, nx, ny, restitution) {
 const impulse = -(1 + restitution) * (ball.speedX * nx + ball.speedY * ny) / (nx * nx + ny * ny);
 ball.speedX += impulse * nx;
 ball.speedY += impulse * ny;}
-function resetBall() {const newBall = {
-x: canvas.width * 3/4,
-y: 20,
-speedY: 0,
-speedX: -(Math.random() * 4 + 2),
-prevPositions: []};balls.push(newBall);}
+function resetBall() {
+  if (cooldownTimer > 0) return;
+  if (ballsLeft === 0) {
+    cooldownTimer = baseCooldownTime * cooldownMultiplier;
+    cooldownMultiplier += 1;
+  }
+  const newBall = {
+    x: canvas.width * 3 / 4,
+    y: 20,
+    speedY: 0,
+    speedX: -(Math.random() * 4 + 2),
+    prevPositions: []
+  };
+  balls.push(newBall);
+}
 function updateBall(ball) {
 ball.prevPositions.push({ x: ball.x, y: ball.y });
 if (ball.prevPositions.length > ballTrailLength) {ball.prevPositions.shift();}
@@ -123,6 +157,12 @@ function draw() {
   drawHighScoreMeter();
   drawAvailableBalls();
   checkBallRefill();
+  if (Date.now() - lastCooldownReset >= cooldownResetTime) {
+    cooldownTimer = 0;
+    cooldownMultiplier = 1;
+    lastCooldownReset = Date.now();
+  }
+  updateCooldownTimerDisplay();
   requestAnimationFrame(draw);
 }
 draw();

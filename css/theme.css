@@ -6,7 +6,7 @@ h1 {
   font-size: 3.5rem;
   display: flex;
   align-items: center;
-  transform: translateY(-30px);
+  transform: translateY(-30px) translateX(40px);
 }
 .header-container {
   width: 450px;

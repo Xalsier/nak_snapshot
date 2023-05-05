@@ -1,50 +1,81 @@
-function populateSelect(yamlData, selectorId) {
-  const selector = document.getElementById(selectorId);
+async function fetchData() {
+  try {
+    const response = await axios.get('../data.yaml');
+    return jsyaml.load(response.data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+function updateSelectOptions(selector, options) {
   selector.innerHTML = '';
-  yamlData.items.forEach((item) => {
+  options.forEach((optionData) => {
     const option = document.createElement('option');
-    option.value = `${yamlData.path}/${item.file}`;
-    option.text = item.title;
-    if (item.key) {option.setAttribute('data-key', item.key);}selector.appendChild(option);});}
-function fetchAndPopulate(yamlData, selectorId, filterKey, filterValue) {
-  fetch('../data.yaml').then((response) => response.text()).then((yamlText) => jsyaml.load(yamlText)).then((data) => {
-      let path, items = [];
-      if (filterKey === 'volumes') {path = data.chapters.path;items = data.chapters.volumes[filterValue].items;
-      } else if (filterKey === 'collections') {path = data.pages.path;items = data.pages.collections[filterValue].items;}
-      populateSelect({ path, items }, selectorId);});}
+    option.value = optionData.value;
+    option.text = optionData.text;
+    if (optionData.key) option.setAttribute('data-key', optionData.key);
+    selector.appendChild(option);
+  });
+}
+
+async function updatePageList(collectionKey) {
+  const data = await fetchData();
+  const path = data.pages.path;
+  const items = data.pages.collections[collectionKey].items;
+  const selector = document.getElementById('page-list');
+  const options = items.map((item) => ({
+    value: `${path}/${item.file}`,
+    text: item.title,
+    key: item.key,
+  }));
+  updateSelectOptions(selector, options);
+}
+
 if (document.getElementById('collection-list')) {
-  fetch('../data.yaml')
-    .then((response) => response.text())
-    .then((yamlText) => jsyaml.load(yamlText))
-    .then((data) => {
-      const collectionList = Object.keys(data.pages.collections);
-      collectionList.forEach((collection) => {
-        const option = document.createElement('option');
-        option.value = collection;
-        option.text = collection;
-        document.getElementById('collection-list').appendChild(option);});
-      fetchAndPopulate(data.pages, 'page-list', 'collections', collectionList[0]);});
-  document.getElementById('collection-list').addEventListener('change', function () {const selectedCollection = this.value;
-    fetch('../data.yaml').then((response) => response.text()).then((yamlText) => jsyaml.load(yamlText)).then((data) => {fetchAndPopulate(data.pages, 'page-list', 'collections', selectedCollection);});});}
+  fetchData().then((data) => {
+    const collectionList = Object.keys(data.pages.collections);
+    const selector = document.getElementById('collection-list');
+    const options = collectionList.map((collection) => ({
+      value: collection,
+      text: collection,
+    }));
+    updateSelectOptions(selector, options);
+    selector.addEventListener('change', function () {
+      updatePageList(this.value);
+    });
+    updatePageList(collectionList[0]);
+  });
+}
+
 if (document.getElementById('page-list')) {
   const pageSelector = document.getElementById('page-list');
   pageSelector.addEventListener('change', function () {
-    const selectedItem = this.options[this.selectedIndex];
-    const filePath = selectedItem.value;
-    const key = selectedItem.getAttribute('data-key');
-    displayContent('page-content', filePath, key);});
-  pageSelector.addEventListener('DOMNodeInserted', function () {
-    if (this.options.length > 0) {
-      this.selectedIndex = 0;
-      const filePath = this.options[0].value;
-      const key = this.options[0].getAttribute('data-key');
+    const filePath = this.value;
+    const key = this.options[this.selectedIndex].getAttribute('data-key');
+    displayContent('page-content', filePath, key);
+  });
+  const observer = new MutationObserver(function () {
+    if (pageSelector.options.length > 0) {
+      pageSelector.selectedIndex = 0;
+      const filePath = pageSelector.options[0].value;
+      const key = pageSelector.options[0].getAttribute('data-key');
       displayContent('page-content', filePath, key);
-      this.removeEventListener('DOMNodeInserted', arguments.callee);}});}
-function displayContent(contentId, filePath, key = null) {
-  if (key) {if (!sessionStorage.getItem(key)) {filePath = '';}}
-  fetch(filePath)
-    .then(response => response.text())
-    .then(data => {
-      const md = new markdownit();
-      const content = document.getElementById(contentId);
-      content.innerHTML = md.render(data);}).catch(error => {console.error('Error fetching content:', error);});}
+      observer.disconnect();
+    }
+  });
+  observer.observe(pageSelector, { childList: true });
+}
+
+async function displayContent(contentId, filePath, key = null) {
+  if (key && !sessionStorage.getItem(key)) {
+    filePath = '';
+  }
+  try {
+    const response = await axios.get(filePath);
+    const md = new markdownit();
+    const content = document.getElementById(contentId);
+    content.innerHTML = md.render(response.data);
+  } catch (error) {
+    console.error('Error fetching content:', error);
+  }
+}

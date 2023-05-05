@@ -27,31 +27,3 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(`#window${i} .window-content`).style.display = 'none';
   }
 });
-function enableDisableJavascript(activeWindowNumber) {
-  // Use a Map instead of an object
-  const scripts = new Map([
-    [1, './js/win/calendar.js'],
-    [2, './js/win/novel.js'],
-    [3, './js/win/codex.js'],
-    [4, './js/win/pac_app.js'],
-  ]);
-
-  // Use Map.prototype.forEach instead of for loop
-  scripts.forEach((script, i) => {
-    if (i === activeWindowNumber) {
-      const scriptElement = document.querySelector(`script[src="${script}"]`);
-
-      if (!scriptElement) {
-        const newScript = document.createElement('script');
-        newScript.src = script;
-
-        // Add the module type for pac_app.js
-        if (i === 4) {
-          newScript.type = 'module';
-        }
-
-        document.body.appendChild(newScript);
-      }
-    }
-  });
-}

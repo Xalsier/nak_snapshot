@@ -1,0 +1,27 @@
+body {background-color: #2e3a2e;background-image: radial-gradient(rgba(255, 255, 255, 0.034) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,1) 100%),url('https://cdn.discordapp.com/attachments/1098871417283559494/1102046148870537276/image.png'),url('https://cdn.discordapp.com/attachments/1098740627191107594/1100617530755780648/axiom-pattern.png');background-repeat: repeat;color: #ff4d4d;filter: blur(0.5px);text-align: center;height: 150vh;margin: 20px;perspective: 2000px;}
+p {font-family: 'VT323', monospace;color: #ffffff;filter: blur(0.3px);word-wrap: break-word;overflow-wrap: break-word;margin: 0.1em 0;}
+strong {font-family: 'VT323', monospace;color: #ff4d4d;text-shadow: 0px 0px 10px rgba(255, 77, 77, 0.719);}
+div {padding: 5px;}
+h1 {
+  font-size: 3.5rem;
+  display: flex;
+  align-items: center;
+  transform: translateY(-30px) translateX(40px);
+}
+.header-container {
+  width: 450px;
+  margin: auto;
+  position: relative;
+}
+.hidden {display: none;}
+header {z-index: 2;position: relative;}
+footer {position: absolute;background: transparent;color: #ff4d4d;text-align: center;bottom: 0;padding: 20px;font-size: 0.9rem;left: 50%;transform: translateX(-50%);z-index: 50;}
+.window {position: absolute;display: inline-block;background-image: radial-gradient(circle, rgba(255, 255, 255, 0.144) 0%, rgba(0, 0, 0, 0.8) 100%);background-repeat: repeat;background-color: rgb(25, 0, 0);border-radius: 10px;box-sizing: border-box;width: 450px;box-shadow: 0px 0px 100px 2px rgba(46, 17, 17, 0.5);z-index: 10;top: 120px;transition: transform 0.5s, opacity 0.5s;transform-style: preserve-3d;}
+.content-container {display: grid;grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));grid-gap: 20px;justify-content: center;align-items: center;width: 100%;}
+.window-content {display: flex;align-items: center;justify-content: center;}
+.tab {background-color: #ff4d4d;color: #000000;font-size: 1.2rem;padding: 5px 10px;border-top-left-radius: 5px;border-bottom-right-radius: 5px;position: absolute;top: -20px;left: 0;translate: 10px 0px;z-index: 20;box-sizing: border-box;}
+.window-action {margin-left: 5px;cursor: pointer;}
+.window-action:hover {color: #676767;}
+iframe {
+  border: none;
+}

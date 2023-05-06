@@ -32,3 +32,7 @@ This roadmap outlines the developmental milestones from Snapshot 3.5 to Snapshot
 - Implement a storage system for managing loot, including features for searching, resetting, and saving cards in local storage.
 - Develop a user-friendly interface for managing the storage system, enabling players to easily interact with and organize their cards.
 - Test and polish the storage system to ensure a smooth user experience and seamless integration with the rest of the website.
+
+## Copyright
+
+Copyright © 2023 Xalsier Kitsune. All Rights Reserved.

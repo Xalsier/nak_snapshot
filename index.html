@@ -14,8 +14,42 @@
   <script src="./js/lib/d3.v6.min.js" defer></script>
   <script src="./js/lib/js-yaml.min.js" defer></script>
   <script src="./js/lib/axios.js" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="./js/fallback.js" defer></script>
-  <script src="./js/main.js" defer></script></head><body><header>
+  <script src="./js/article.js" defer></script>
+  <script>
+const NUMBER_OF_WINDOWS = 4;
+function changeBodyBackground(windowNumber) {
+  const bodyElement = document.getElementById("my-body");
+  bodyElement.classList.remove("background-window1", "background-window2", "background-window3", "background-window4");
+  bodyElement.classList.add(`background-window${windowNumber}`);
+}
+function changeWindow(windowNumber, event) {
+  if (event) {
+    event.preventDefault();
+  }
+  const windowElement = document.getElementById(`window${windowNumber}`);
+  windowElement.classList.add("active");
+  windowElement.classList.remove("inactive");
+  windowElement.querySelector(".window-content").style.display = 'flex';
+  for (let i = 1; i <= NUMBER_OF_WINDOWS; i++) {
+    if (i !== windowNumber) {
+      const otherWindow = document.getElementById(`window${i}`);
+      otherWindow.classList.remove("active");
+      otherWindow.classList.add("inactive");
+      otherWindow.querySelector(".window-content").style.display = 'none';
+    }
+  }
+  changeBodyBackground(windowNumber); // Call changeBodyBackground to change background color
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  changeWindow(1);
+  for (let i = 2; i <= NUMBER_OF_WINDOWS; i++) {
+    document.querySelector(`#window${i} .window-content`).style.display = 'none';
+  }
+});
+  </script></head><body id="my-body"><header>
   <div class="header-container"><h1>Na'kioku</h1></div></header>
 <nav class="ribbon"><button class="dropbtn">Bookmark</button><div class="dropdown-content">
   <a href="#window1" id="button1" onclick="changeWindow(1, event)" class="calendar"><h3>カレンダー</h3></a>
@@ -28,23 +62,30 @@
   <div id="calendar"></div>
   <button id="next-month">&gt;</button></div>
   <script src="./js/win/calendar.js" defer></script></section>
-<section id="window2" class="window"><div id="chapter-selector" class="tab">
-  <label for="volume-list">巻</label><select id="volume-list"></select>
-  <label for="chapter-list">章</label><select id="chapter-list"></select></div>
-  <div class="window-content"><div id="chapter-content" class="main-container"></div></div>
-  <script src="./js/win/novel.js" defer></script></section>
-<section id="window3" class="window"><div id="page-selector" class="tab">
-  <label for="collection-list">まとめ</label><select id="collection-list"></select>
-  <label for="page-list">ページ</label><select id="page-list"></select></div>
-  <div class="window-content"><div id="page-content" class="main-container"></div></div>
-  <script src="./js/win/codex.js" defer></script></section>
+<section id="window2" class="window"><iframe id="novel-content-area" class="loaded-content" width="450px" height="600px"></iframe>
+  <div id="chapter-selector" class="tab">
+  <select id="novel-html-selector">
+    <option value="">Select a Chapter</option>
+    <option value="./html/novel/chapter001.html">Chapter 1</option>
+    <option value="./html/novel/chapter002.html">Chapter 2</option>
+  </select>
+</div>
+<div class="window-content"></div></section>
+<section id="window3" class="window"><iframe id="codex-content-area" class="loaded-content" width="450px" height="600px"></iframe>
+<div id="page-selector" class="tab">
+  <select id="codex-html-selector">
+    <option value="">Select an article</option>
+    <option value="./html/codex/nester.html">Nester</option>
+    <option value="./html/codex/zsasz.html">Zsasz</option>
+  </select></div>
+  <div class="window-content"></div></section>
 <section id="window4" class="window"><div class="tab"><p>パチンコ</p></div>
   <div class="window-content">
     <canvas id="leftCanvas" width="30" height="300">&lt;</canvas>
     <canvas id="pachinkoCanvas" width="300" height="300"></canvas>
     <canvas id="rightCanvas" width="30" height="300">&gt;</canvas></div>
     <script type="module" src="./js/win/pac_app.js" defer></script></section>   
-<footer><div><p>PLACEHOLDER_TEXT</p><p>Na'kioku © 2023 Xalsier Kitsune. All rights reserved.</p>
+<footer><div><p>(v0.3.6)-snapshot</p><p>Na'kioku © 2023 Xalsier Kitsune. All rights reserved.</p>
   <a href="https://twitter.com/Xalsier" target="_blank"><img src="./ass/twitter.png" alt="Twitter" width="32" height="32" loading="lazy"></a>
   <a href="https://discord.gg/uzPGC2k3kp" target="_blank"><img src="./ass/discord.png" alt="Discord" width="32" height="32" loading="lazy"></a>
 </div></footer></body></html>

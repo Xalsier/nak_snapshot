@@ -6,50 +6,8 @@
   <meta name="author" content="Xalsier Kitsune">
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="./css/styles.css">
-  <link rel="stylesheet" href="./css/calendar.css">
-  <link rel="stylesheet" href="./css/navribbon.css">
-  <link rel="stylesheet" href="./css/nak_theme.css">
-  <link rel="stylesheet" href="./css/wiki.css">
-  <script src="./js/lib/markdown-it.min.js" defer></script>
-  <script src="./js/lib/d3.v6.min.js" defer></script>
-  <script src="./js/lib/js-yaml.min.js" defer></script>
-  <script src="./js/lib/axios.js" defer></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="./js/fallback.js" defer></script>
   <script src="./js/article.js" defer></script>
-  <script>
-const NUMBER_OF_WINDOWS = 4;
-function changeBodyBackground(windowNumber) {
-  const bodyElement = document.getElementById("my-body");
-  bodyElement.classList.remove("background-window1", "background-window2", "background-window3", "background-window4");
-  bodyElement.classList.add(`background-window${windowNumber}`);
-}
-function changeWindow(windowNumber, event) {
-  if (event) {
-    event.preventDefault();
-  }
-  const windowElement = document.getElementById(`window${windowNumber}`);
-  windowElement.classList.add("active");
-  windowElement.classList.remove("inactive");
-  windowElement.querySelector(".window-content").style.display = 'flex';
-  for (let i = 1; i <= NUMBER_OF_WINDOWS; i++) {
-    if (i !== windowNumber) {
-      const otherWindow = document.getElementById(`window${i}`);
-      otherWindow.classList.remove("active");
-      otherWindow.classList.add("inactive");
-      otherWindow.querySelector(".window-content").style.display = 'none';
-    }
-  }
-  changeBodyBackground(windowNumber); // Call changeBodyBackground to change background color
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  changeWindow(1);
-  for (let i = 2; i <= NUMBER_OF_WINDOWS; i++) {
-    document.querySelector(`#window${i} .window-content`).style.display = 'none';
-  }
-});
-  </script></head><body id="my-body"><header>
+  <script src="./js/window.js" defer></script></head><body id="my-body"><header>
   <div class="header-container"><h1>Na'kioku</h1></div></header>
 <nav class="ribbon"><button class="dropbtn">Bookmark</button><div class="dropdown-content">
   <a href="#window1" id="button1" onclick="changeWindow(1, event)" class="calendar"><h3>カレンダー</h3></a>
@@ -61,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <button id="previous-month">&lt;</button>
   <div id="calendar"></div>
   <button id="next-month">&gt;</button></div>
-  <script src="./js/win/calendar.js" defer></script></section>
+  <script src="./js/calendar.js" defer></script></section>
 <section id="window2" class="window"><iframe id="novel-content-area" class="loaded-content" width="450px" height="600px"></iframe>
   <div id="chapter-selector" class="tab">
   <select id="novel-html-selector">
@@ -84,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <canvas id="leftCanvas" width="30" height="300">&lt;</canvas>
     <canvas id="pachinkoCanvas" width="300" height="300"></canvas>
     <canvas id="rightCanvas" width="30" height="300">&gt;</canvas></div>
-    <script type="module" src="./js/win/pac_app.js" defer></script></section>   
+    <script type="module" src="./js/pac/pac_app.js" defer></script></section>   
 <footer><div>
   <p>(v0.3.6)-snapshot</p>
   <p>Na'kioku © 2023 Xalsier Kitsune. All rights reserved.</p>

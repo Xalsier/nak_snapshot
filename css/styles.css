@@ -1,34 +1,85 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-@font-face {font-family: 'VT323', monospace;src: url('https://fonts.googleapis.com/css2?family=VT323&display=swap') format('woff2');}
-@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}
-@keyframes rotateIn {0% {opacity: 0;transform: translateY(0) rotateY(-45deg) translateX(-300px);}100% {opacity: 1;transform: translateY(0) rotateY(0deg) translateX(-47%);}}
-@keyframes rotateOut {0% {transform: rotate(0deg);}100% {transform: rotate(3deg) translateX(-47%) translateY(10px);;}}
-@keyframes rainbow {0% {color: red;}16% {color: orange;}32% {color: yellow;}48% {color: green;}64% {color: blue;}80% {color: indigo;}100% {color: violet;}}
-@keyframes vibrate {0% {transform: translate(0);}20% {transform: translate(-1px, 1px);}40% {transform: translate(1px, -1px);}60% {transform: translate(-1px, -1px);}80% {transform: translate(1px, 1px);}100% {transform: translate(0);}}
-@keyframes blink {0%, 100% {opacity: 1;}50% {opacity: 0;}}
-@keyframes rotateOut1 {0% {transform: rotate(0deg);}100% {transform: rotate(3deg) translateX(-47%) translateY(10px);}}
-@keyframes rotateOut2 {0% {transform: rotate(0deg);}100% {transform: rotate(5deg) translateX(-47%) translateY(20px);}}
-@keyframes rotateOut3 {0% {transform: rotate(0deg);}100% {transform: rotate(7deg) translateX(-47%) translateY(30px);}}
-.window.inactive:nth-child(2) {animation: rotateOut1 0.5s forwards;}
-.window.inactive:nth-child(3) {animation: rotateOut2 0.5s forwards;}
-.window.inactive:nth-child(4) {animation: rotateOut3 0.5s forwards;}  
-.spin {animation: spin 5s linear infinite;}
-.window.active {opacity: 1;z-index: 50;animation: rotateIn 0.5s forwards;}
-.window.inactive {opacity: 0.5;z-index: 0;pointer-events: none;animation: rotateOut 0.5s forwards;}
-nav.ribbon .dropdown-content a.calendar::before {content: "\25CF";margin-right: 8px;animation-name: rainbow;animation-timing-function: ease;animation-duration: 3s;animation-iteration-count: infinite;left: 0;}
-.vibrate {animation: vibrate 0.3s infinite;}
-.blink {animation: blink 1s infinite;}
-.background-window1 {
-    background-color: rgb(68, 48, 48);
+@import url('../css/calendar.css');
+@import url('../css/navribbon.css');
+@import url('../css/nak_theme.css');
+@import url('../css/wiki.css');
+@font-face {
+  font-family: 'VT323', monospace;
+  src: url('https://fonts.googleapis.com/css2?family=VT323&display=swap') format('woff2');
+}
+
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotateY(-45deg);
   }
-  .background-window2 {
-    background-color: rgb(71, 49, 67);
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg) translateX(-47%);
   }
-  .background-window3 {
-    background-color: #2e3a2e;
+}
+
+@keyframes rotateOut {
+  0% {
+    transform: rotate(0deg);
   }
-  .background-window4 {
-    background-color: rgb(43, 40, 54);
+  100% {
+    transform: rotate(3deg) translateX(-47%) translateY(10px);
   }
-  
+}
+
+@keyframes rainbow {
+  0% {color: #ff4d4d;}
+  25% {color: #ff60e4;}
+  50% {color: #55fc55;}
+  100% {color: #7070ff;}
+}
+
+@keyframes vibrate {
+  0% {transform: translate(0);}
+  50% {transform: translate(-1px, 1px);}
+  100% {transform: translate(0);}
+}
+
+@keyframes blink {
+  0%, 100% {opacity: 1;}
+  50% {opacity: 0;}
+}
+
+.window.active {
+  opacity: 1;
+  z-index: 50;
+  animation: rotateIn 1s forwards;
+  will-change: transform, opacity;
+}
+
+.window.inactive {
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+  animation: rotateOut 1s forwards;
+  will-change: transform, opacity;
+}
+
+nav.ribbon .dropdown-content a.calendar::before {
+  content: "\25CF";
+  margin-right: 8px;
+  animation: rainbow 2s infinite ease;
+  will-change: color;
+}
+
+.vibrate {
+  animation: vibrate 0.5s infinite;
+  will-change: transform;
+}
+
+.blink {
+  animation: blink 2s infinite;
+  will-change: opacity;
+}
+
+.background-window1 {background-color: rgb(68, 48, 48);}
+.background-window2 {background-color: rgb(71, 49, 67);}
+.background-window3 {background-color: #2e3a2e;}
+.background-window4 {background-color: rgb(43, 40, 54);}

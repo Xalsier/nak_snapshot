@@ -1,4 +1,5 @@
-import { Pockets, drawHoles } from '../pac/pac_poc.js';import { Pins } from '../pac/pac_pin.js';
+import { Pockets, drawHoles } from './pac_poc.js';
+import { Pins } from './pac_pin.js';
 const canvas = document.getElementById('pachinkoCanvas');
 const ctx = canvas.getContext('2d');
 const ballRadius = 2;
@@ -12,8 +13,6 @@ const holeCount = 20;
 const holeScores = [2, 3, 5, 5, 10, 10, 5, 5, 3, 2];
 const pegVibrationAmplitude = 0.5;
 const gravity = 0.1;
-let score = 50;
-let balls = [];
 const pins = new Pins(canvas.width, pegCountRows, canvas.height);
 const pegs = pins.pegs;
 const pockets = new Pockets(canvas.width, holeCount, canvas.height);
@@ -22,6 +21,9 @@ const leftCanvas = document.getElementById('leftCanvas');
 const leftCtx = leftCanvas.getContext('2d');
 const rightCanvas = document.getElementById('rightCanvas');
 const rightCtx = rightCanvas.getContext('2d');
+let score = 0;
+let balls = [];
+let lastTime = performance.now();
 let ballLimit = 3;
 let ballsLeft = 3;
 let ballRefillTime = 7000;
@@ -30,8 +32,7 @@ function drawHighScoreMeter() {
   const meterHeight = (score / 100) * leftCanvas.height;
   leftCtx.clearRect(0, 0, leftCanvas.width, leftCanvas.height);
   leftCtx.fillStyle = 'white';
-  leftCtx.fillRect(0, leftCanvas.height - meterHeight, leftCanvas.width, meterHeight);
-}
+  leftCtx.fillRect(0, leftCanvas.height - meterHeight, leftCanvas.width, meterHeight);}
 function drawAvailableBalls() {
   rightCtx.clearRect(0, 0, rightCanvas.width, rightCanvas.height);
   for (let i = 0; i < ballsLeft; i++) {
@@ -39,15 +40,8 @@ function drawAvailableBalls() {
     rightCtx.arc(rightCanvas.width / 2, rightCanvas.height - (i * ballRadius * 6) - 10, ballRadius * 2, 0, Math.PI * 2);
     rightCtx.fillStyle = 'white';
     rightCtx.fill();
-    rightCtx.closePath();
-  }
-}
-function checkBallRefill() {
-  if (Date.now() - lastBallRefill >= ballRefillTime && ballsLeft < ballLimit) {
-    ballsLeft++;
-    lastBallRefill = Date.now();
-  }
-}
+    rightCtx.closePath();}}
+function checkBallRefill() {if (Date.now() - lastBallRefill >= ballRefillTime && ballsLeft < ballLimit) {ballsLeft++;lastBallRefill = Date.now();}}
 function drawSperm(ball) {
 ctx.beginPath();
 ctx.arc(ball.x, ball.y, ballRadius, 0, Math.PI * 2);
@@ -101,28 +95,25 @@ y: 20,
 speedY: 0,
 speedX: -(Math.random() * 4 + 2),
 prevPositions: []};balls.push(newBall);}
-function updateBall(ball) {
-ball.prevPositions.push({ x: ball.x, y: ball.y });
-if (ball.prevPositions.length > ballTrailLength) {ball.prevPositions.shift();}
-ball.x += ball.speedX;
-ball.y += ball.speedY;
-ball.speedY += gravity;}
-canvas.addEventListener('click', function (event) {
-  if (ballsLeft > 0) {
-    ballsLeft--;
-    resetBall();
-  }
-});
+function updateBall(ball, elapsedTime) {
+  ball.prevPositions.push({ x: ball.x, y: ball.y });
+  if (ball.prevPositions.length > ballTrailLength) {ball.prevPositions.shift();}
+  ball.x += ball.speedX * elapsedTime;
+  ball.y += ball.speedY * elapsedTime;
+  ball.speedY += gravity * elapsedTime;
+  checkCollisions(ball);
+  drawSperm(ball);}
+canvas.addEventListener('click', function (event) {if (ballsLeft > 0) {ballsLeft--;resetBall();}});
 function draw() {
+  const currentTime = performance.now();
+  const elapsedTime = (currentTime - lastTime) / 1000 * 60; // Get elapsed time in seconds
+  lastTime = currentTime;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  balls.forEach(drawSperm);
-  balls.forEach(updateBall);
-  balls.forEach(checkCollisions);
+  balls.forEach((ball) => updateBall(ball, elapsedTime));
   pins.drawPegs(ctx);
   drawHoles(ctx, holes);
   drawHighScoreMeter();
   drawAvailableBalls();
   checkBallRefill();
-  requestAnimationFrame(draw);
-}
+  requestAnimationFrame(draw);}
 draw();

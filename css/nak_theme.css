@@ -1,4 +1,4 @@
-body {background-color: #2e3a2e;background-image: radial-gradient(rgba(255, 255, 255, 0.034) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,1) 100%),url('../ass/graph.png'),url('../ass/axiom.png');background-repeat: repeat;color: #ff4d4d;filter: blur(0.5px);text-align: center;height: 125vh; perspective: 2000px;}
+body {background-color: #2e3a2e;background-image: radial-gradient(rgba(255, 255, 255, 0.034) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,1) 100%),url('../ass/graph.png'),url('../ass/axiom.png');background-repeat: repeat;color: #ff4d4d;filter: blur(0.5px);text-align: center;height: 150vh; min-width: 500px; perspective: 2000px;}
 p {font-family: 'VT323', monospace;color: #ffffff;filter: blur(0.3px);word-wrap: break-word;overflow-wrap: break-word;margin: 0.1em 0;}
 strong {font-family: 'VT323', monospace;color: #ff4d4d;text-shadow: 0px 0px 10px rgba(255, 77, 77, 0.719);}
 div {padding: 5px;}
@@ -14,3 +14,5 @@ footer {position: absolute;background: transparent;color: #ff4d4d;text-align: ce
 .window-action {margin-left: 5px;cursor: pointer;}
 .window-action:hover {color: #676767;}
 iframe {border: none;}
+.red-link {color: #ff4d4d;text-decoration: none;}
+.red-link:hover {color: #a83333;text-decoration: underline;}  

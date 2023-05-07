@@ -1,6 +1,6 @@
 const footerContent = `
 <div>
-<a href="https://github.com/Xalsier/nak_snapshot" target="_blank" class="red-link">(v0.3.6)-snapshot</a>
+<a href="https://github.com/Xalsier/nak_snapshot" target="_blank" class="red-link">(v0.3.6.5)-snapshot</a>
 <p>Na'kioku © 2023 Xalsier Kitsune. All rights reserved.</p>
 <a href="https://twitter.com/Xalsier" target="_blank">
     <img src="./ass/twitter.png" alt="Twitter" width="32" height="32" loading="lazy"></a>

@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="./css/styles.css">
   <script src="./js/article.js" defer></script>
   <script src="./js/window.js" defer></script></head><body id="my-body"><header>
-  <div class="header-container"><h1>Na'kioku</h1></div></header>
-<nav class="ribbon"><button class="dropbtn">Bookmark</button><div class="dropdown-content">
-  <a href="#window1" id="button1" onclick="changeWindow(1, event)" class="calendar"><h3>カレンダー</h3></a>
-  <a href="#window2" id="button2" onclick="changeWindow(2, event)" class="webnovel"><h3>ラノベ</h3></a>
-  <a href="#window3" id="button3" onclick="changeWindow(3, event)" class="codex"><h3>ウィキ</h3></a>
-  <a href="#window4" id="button4" onclick="changeWindow(4, event)" class="pachinko"><h3>パチンコ</h3></a></div></nav>
+  <div class="header-container"><h1>Na'kioku</h1></div>
+  <nav class="ribbon"><button class="dropbtn">Bookmark</button><div class="dropdown-content">
+    <a href="#window1" id="button1" onclick="changeWindow(1, event)" class="calendar"><h3>カレンダー</h3></a>
+    <a href="#window2" id="button2" onclick="changeWindow(2, event)" class="webnovel"><h3>ラノベ</h3></a>
+    <a href="#window3" id="button3" onclick="changeWindow(3, event)" class="codex"><h3>ウィキ</h3></a>
+    <a href="#window4" id="button4" onclick="changeWindow(4, event)" class="pachinko"><h3>パチンコ</h3></a></div></nav></header>
 <section id="window1" class="window"><div class="tab" id="calendar-month-year"></div><div class="window-content">
   <div id="calendar-navigation"></div>
   <button id="previous-month">&lt;</button>
@@ -24,8 +24,8 @@
   <div id="chapter-selector" class="tab">
   <select id="novel-html-selector">
     <option value="">Select a Chapter</option>
-    <option value="./obs2/chapter001.html">Chapter 1</option>
-    <option value="./obs2/chapter002.html">Chapter 2</option>
+    <option value="./obs/chapter001.html">第一章</option>
+    <option value="./obs/chapter002.html">第二章</option>
   </select>
 </div>
 <div class="window-content"></div></section>
@@ -33,8 +33,8 @@
 <div id="page-selector" class="tab">
   <select id="codex-html-selector">
     <option value="">Select an article</option>
-    <option value="./obs2/nester.html">Nester</option>
-    <option value="./obs2/zsasz.html">Zsasz</option>
+    <option value="./obs/nester.html">Nester</option>
+    <option value="./obs/zsasz.html">Zsasz</option>
   </select></div>
   <div class="window-content"></div></section>
 <section id="window4" class="window"><div class="tab"><p>パチンコ</p></div>
@@ -44,7 +44,7 @@
     <canvas id="rightCanvas" width="30" height="300">&gt;</canvas></div>
     <script type="module" src="./js/pac/pac_app.js" defer></script></section>   
 <footer><div>
-  <p>(v0.3.6)-snapshot</p>
+  <a href="https://github.com/Xalsier/nak_snapshot" target="_blank">(v0.3.6)-snapshot</a>
   <p>Na'kioku © 2023 Xalsier Kitsune. All rights reserved.</p>
   <a href="https://twitter.com/Xalsier" target="_blank"><img src="./ass/twitter.png" alt="Twitter" width="32" height="32" loading="lazy"></a>
   <a href="https://discord.gg/uzPGC2k3kp" target="_blank"><img src="./ass/discord.png" alt="Discord" width="32" height="32" loading="lazy"></a>

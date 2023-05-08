@@ -10,8 +10,8 @@
 @keyframes rainbow {0% {color: #ff4d4d;}25% {color: #ff60e4;}50% {color: #55fc55;}100% {color: #7070ff;}}
 @keyframes vibrate {0% {transform: translate(0);}50% {transform: translate(-1px, 1px);}100% {transform: translate(0);}}
 @keyframes blink {0%, 100% {opacity: 1;}50% {opacity: 0;}}
-.window.active {opacity: 1;z-index: 50;animation: rotateIn 0.5s forwards;will-change: transform, opacity;}
-.window.inactive {opacity: 0.5;z-index: 0;pointer-events: none;animation: rotateOut 0.5s forwards;will-change: transform, opacity;}
+.window.active {opacity: 1;z-index: 50;animation: rotateIn 0.5s forwards;}
+.window.inactive {opacity: 0.5;z-index: 0;pointer-events: none;animation: rotateOut 0.5s forwards;}
 nav.ribbon .dropdown-content a.calendar::before {content: "\25CF";margin-right: 8px;animation: rainbow 2s infinite ease;will-change: color;}
 .vibrate {animation: vibrate 0.5s infinite;will-change: transform;}
 .blink {animation: blink 2s infinite;will-change: opacity;}

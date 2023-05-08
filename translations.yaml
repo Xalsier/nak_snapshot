@@ -1,0 +1,48 @@
+en:
+  window1_title: Calendar
+  window2_title: Webnovel
+  window3_title: Wiki
+  window4_title: Pachinko
+  chapter_select: Select a Chapter
+  chapter_001: Chapter 1
+  chapter_002: Chapter 2
+  article_select: Select an Article
+  article_001: Nester
+  article_002: Zsasz
+  footer_text: Na'kioku © 2023 Xalsier Kitsune. All rights reserved.
+ja:
+  window1_title: カレンダー
+  window2_title: ラノベ
+  window3_title: ウィキ
+  window4_title: パチンコ
+  chapter_select: 章を選択してください
+  chapter_001: 第一話
+  chapter_002: 第二話
+  article_select: 記事を選択してください
+  article_001: Nester
+  article_002: Zsasz
+  footer_text: Na'kioku © 2023 Xalsier Kitsune. 全著作権所有。
+en-JP:
+  window1_title: カレンダー
+  window2_title: ラノベ
+  window3_title: ウィキ
+  window4_title: パチンコ
+  chapter_select: 章を選択してください
+  chapter_001: 第1話
+  chapter_002: 第2話
+  article_select: 記事を選択してください
+  article_001: Nester
+  article_002: Zsasz
+  footer_text: Na'kioku © 2023 Xalsier Kitsune. 全著作権所有。
+es:
+  window1_title: Calendario
+  window2_title: Novela Web
+  window3_title: Wiki
+  window4_title: Pachinko
+  chapter_select: Seleccionar un Capítulo
+  chapter_001: Capítulo 1
+  chapter_002: Capítulo 2
+  article_select: Seleccione un artículo
+  article_001: Nester
+  article_002: Zsasz
+  footer_text: Na'kioku © 2023 Xalsier Kitsune. Todos los derechos reservados.

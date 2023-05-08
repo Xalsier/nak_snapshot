@@ -7,14 +7,14 @@
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="./css/styles.css">
   <script src="./js/article.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
   <script src="./js/perf/footer.js" defer></script>
   <script src="./js/window.js" defer></script></head><body id="my-body"><main><header>
-  <div class="header-container"><h1>Na'kioku</h1></div>
-  <nav class="ribbon"><button class="dropbtn">Bookmark</button><div class="dropdown-content">
+  <div class="header-container"><h1>Na'kioku</h1><nav class="ribbon"><button class="dropbtn">Bookmark</button><div class="dropdown-content">
     <a href="#window1" id="button1" onclick="changeWindow(1, event)" class="calendar"><h3>カレンダー</h3></a>
     <a href="#window2" id="button2" onclick="changeWindow(2, event)" class="webnovel"><h3>ラノベ</h3></a>
     <a href="#window3" id="button3" onclick="changeWindow(3, event)" class="codex"><h3>ウィキ</h3></a>
-    <a href="#window4" id="button4" onclick="changeWindow(4, event)" class="pachinko"><h3>パチンコ</h3></a></div></nav></header>
+    <a href="#window4" id="button4" onclick="changeWindow(4, event)" class="pachinko"><h3>パチンコ</h3></a></div></nav></div></header>
 <section id="window1" class="window"><div class="tab" id="calendar-month-year"></div><div class="window-content">
   <div id="calendar-navigation"></div>
   <button id="previous-month">&lt;</button>
@@ -25,8 +25,8 @@
   <div id="chapter-selector" class="tab">
   <select id="novel-html-selector">
     <option value="">Select a Chapter</option>
-    <option value="./obs/chapter001.html">第一章</option>
-    <option value="./obs/chapter002.html">第二章</option>
+    <option value="./obs/chapter001.html">第1話</option>
+    <option value="./obs/chapter002.html">第2話</option>
   </select>
 </div>
 <div class="window-content"></div></section>

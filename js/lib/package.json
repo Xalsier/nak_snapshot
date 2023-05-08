@@ -1,0 +1,14 @@
+{
+    "name": "nak_project",
+    "version": "0.3.7",
+    "description": "Webnovel for Na'kioku",
+    "main": "index.html",
+    "dependencies": {
+      "js-yaml": "^4.1.0"
+    },
+    "devDependencies": {
+       "js-yaml": "^4.1.0"
+    },
+    "author": "Xalsier Kitsune"
+  }
+  

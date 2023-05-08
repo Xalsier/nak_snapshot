@@ -10,7 +10,7 @@ The content of the webnovel (When it's up) will have a mature subject matter, an
 
 ## Synopsis
 
-[In progress]
+[In progress] // Will be updated on Snapshot 1.0.0
 
 ## Socials 🍂
 

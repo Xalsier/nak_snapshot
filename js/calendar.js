@@ -2,6 +2,43 @@ window.addEventListener('load', async () => {events = await fetchEvents();eventC
 const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay();
 const isPastDate = (year, month, day) => new Date(year, month, day) < new Date();
 const isToday = (year, month, day) => new Date(year, month, day).toDateString() === new Date().toDateString();
+let eventImageContainer;
+function showEventImage(imageList, position) {
+  if (!eventImageContainer) {
+    eventImageContainer = document.createElement('div');
+    eventImageContainer.className = 'event-image-container';
+    document.body.appendChild(eventImageContainer);
+  }
+
+  async function loadImage(src) {
+    try {
+      const img = new Image();
+      img.src = src;
+      await img.decode();
+      eventImageContainer.innerHTML = '';
+      eventImageContainer.appendChild(img);
+      return true;
+    } catch (error) {
+      console.log(`Error loading image: ${src}`);
+      return false;
+    }
+  }
+
+  (async () => {
+    for (const image of imageList) {
+      const success = await loadImage(image.src);
+      if (success) break;
+    }
+  })();
+
+  eventImageContainer.style.left = `${position.right}px`;
+  eventImageContainer.style.top = `${position.top}px`;
+}
+function hideEventImage() {
+  if (eventImageContainer) {
+    eventImageContainer.innerHTML = '';
+  }
+}
 function createCalendar(events, daysInMonth, year, month) {
   const calendarContainer = document.createElement('div');
   calendarContainer.className = 'calendar-container';
@@ -31,7 +68,16 @@ function createCalendar(events, daysInMonth, year, month) {
     if (isPastDate(year, month, i)) calendarDay.classList.add('past');
     const eventKey = `${year}-${(month + 1).toString().padStart(2, '0')}-${i.toString().padStart(2, '0')}`;
     if (eventKeys.includes(eventKey)) {
-      calendarDay.classList.add(`event-day-${events[eventKey]}`);
+      const eventData = events[eventKey];
+      calendarDay.classList.add(`event-day-${eventData.type}`);
+      if (eventData.images) {
+        calendarDay.addEventListener('mouseenter', () => {
+          showEventImage(eventData.images, calendarDay.getBoundingClientRect());
+        });
+        calendarDay.addEventListener('mouseleave', () => {
+          hideEventImage();
+        });
+      }
     }
     calendarContainer.appendChild(calendarDay);
     i++;
@@ -99,36 +145,22 @@ function findEvent(events, year, month, day) {
     return adjustedEventDate.getFullYear() === year && adjustedEventDate.getMonth() === month && adjustedEventDate.getDate() === day;
   }) || null;
 }
+// Modify fetchEvents() to load the image data along with the event data
 async function fetchEvents() {
   try {
-    const response = await fetch('../events.csv');
-    const data = await response.text();
-    const lines = data.split('\n');
-    const events = {};
-    for (let i = 6; i < lines.length; i++) {
-      const line = lines[i];
-      if (!line) continue;
-      const [date, eventType] = line.split(',');
-      events[date] = parseInt(eventType, 10);
-    }
-    return events;
+    const response = await fetch('../events.json');
+    const data = await response.json();
+    return data.events;
   } catch (error) {
     console.error('Error fetching events:', error);
-    return [];
+    return {};
   }
 }
 async function fetchEventColors() {
   try {
-    const response = await fetch('../events.csv');
-    const data = await response.text();
-    const lines = data.split('\n');
-    const eventColors = {};
-    for (let i = 1; i < 5; i++) {
-      const line = lines[i];
-      const [eventType, background, color] = line.split(',');
-      eventColors[eventType] = { background, color };
-    }
-    return eventColors;
+    const response = await fetch('../events.json');
+    const data = await response.json();
+    return data.eventColors;
   } catch (error) {
     console.error('Error fetching event colors:', error);
     return {};
@@ -149,7 +181,7 @@ async function updateEventColors(events, year, month) {
     const eventKey = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
     if (eventKeys.includes(eventKey)) {
       const eventType = events[eventKey];
-      const eventColor = eventColors[eventType];
+      const eventColor = eventColors[eventType.type];
       if (eventColor) {
         if (isPastDate(year, month, day)) {
           // Apply past event colors

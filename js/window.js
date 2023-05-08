@@ -17,7 +17,6 @@ function changeWindow(windowNumber, event) {
       otherWindow.querySelector(".window-content").style.display = 'none';
     }
   }
-  changeBodyBackground(windowNumber);
 }
 
 function handleWindowClick(event) {

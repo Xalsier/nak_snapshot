@@ -4,12 +4,11 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center bottom;
-    color: #ff4d4d;
+    color: #310e0e;
     filter: blur(0.5px);
     text-align: center;
     height: 150vh;
     min-width: 500px;
-    perspective: 2000px;
 }
 p {font-family: 'VT323', monospace;color: #ffffff;filter: blur(0.3px);word-wrap: break-word;overflow-wrap: break-word;margin: 0.1em 0;}
 strong {font-family: 'VT323', monospace;color: #ff4d4d;text-shadow: 0px 0px 10px rgba(255, 77, 77, 0.719);}
@@ -19,7 +18,7 @@ h1 {font-size: 3.5rem;display: flex;align-items: center;transform: translateY(-3
 .hidden {display: none;}
 header {z-index: 2;position: relative;}
 footer {position: absolute;background: transparent;color: #ff4d4d;text-align: center;bottom: 0;padding: 20px;font-size: 0.9rem;left: 50%;transform: translateX(-50%);z-index: 50;}
-.window {position: absolute;display: inline-block;background-image: radial-gradient(circle, rgba(255, 255, 255, 0.144) 0%, rgba(0, 0, 0, 0.214) 100%);background-repeat: repeat;background-color: rgba(25, 0, 0, 0.273);border-radius: 10px;box-sizing: border-box;width: 450px;box-shadow: 0px 0px 100px 2px rgba(46, 17, 17, 0.5);z-index: 10;top: 120px;transition: transform 0.5s, opacity 0.5s;transform-style: preserve-3d;}
+.window {color: #ffffff;position: absolute;display: inline-block;background-image: radial-gradient(circle, rgba(255, 255, 255, 0.144) 0%, rgba(0, 0, 0, 0.214) 100%);background-repeat: repeat;background-color: rgba(25, 0, 0, 0.273);border-radius: 10px;box-sizing: border-box;width: 450px;box-shadow: 0px 0px 100px 2px rgba(46, 17, 17, 0.5);z-index: 10;top: 120px;transition: transform 0.5s, opacity 0.5s;}
 .content-container {display: grid;grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));grid-gap: 20px;justify-content: center;align-items: center;width: 100%;}
 .window-content {display: flex;align-items: center;justify-content: center;}
 .tab {background-color: #ff4d4d;color: #000000;font-size: 1.2rem;padding: 5px 10px;border-top-left-radius: 5px;border-bottom-right-radius: 5px;position: absolute;top: -20px;left: 0;translate: 10px 0px;z-index: 20;box-sizing: border-box;}
@@ -28,3 +27,14 @@ footer {position: absolute;background: transparent;color: #ff4d4d;text-align: ce
 iframe {border: none;}
 .red-link {color: #ff4d4d;text-decoration: none;}
 .red-link:hover {color: #a83333;text-decoration: underline;}  
+.event-image-container {
+    position: absolute;
+    z-index: 1000;
+  }
+  .event-image-container img {
+    max-width: 200px;
+    max-height: 200px;
+  }
+  .calendar-day:hover .event-image-container {
+    display: block;
+  }

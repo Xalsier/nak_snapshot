@@ -9,7 +9,7 @@ en:
   article_select: Select an Article
   article_001: Nester
   article_002: Zsasz
-  footer_text: Na'kioku © 2023 Xalsier Kitsune. All rights reserved.
+  footer_text: Na'kioku © 2023 Xalsier Kitsune. All rights reserved. Background art by Dimitri Dostoiévski.
 ja:
   window1_title: カレンダー
   window2_title: ラノベ
@@ -21,7 +21,7 @@ ja:
   article_select: 記事を選択してください
   article_001: Nester
   article_002: Zsasz
-  footer_text: Na'kioku © 2023 Xalsier Kitsune. 全著作権所有。
+  footer_text: Na'kioku © 2023 Xalsier Kitsune. 全著作権所有。Background art by Dimitri Dostoiévski.
 en-JP:
   window1_title: カレンダー
   window2_title: ラノベ
@@ -33,7 +33,7 @@ en-JP:
   article_select: 記事を選択してください
   article_001: Nester
   article_002: Zsasz
-  footer_text: Na'kioku © 2023 Xalsier Kitsune. 全著作権所有。
+  footer_text: Na'kioku © 2023 Xalsier Kitsune. 全著作権所有。Background art by Dimitri Dostoiévski.
 es:
   window1_title: Calendario
   window2_title: Novela Web
@@ -45,4 +45,4 @@ es:
   article_select: Seleccione un artículo
   article_001: Nester
   article_002: Zsasz
-  footer_text: Na'kioku © 2023 Xalsier Kitsune. Todos los derechos reservados.
+  footer_text: Na'kioku © 2023 Xalsier Kitsune. Todos los derechos reservados. Background art by Dimitri Dostoiévski.

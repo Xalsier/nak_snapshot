@@ -1,11 +1,5 @@
 const NUMBER_OF_WINDOWS = 4;
 
-function changeBodyBackground(windowNumber) {
-  const bodyElement = document.getElementById("my-body");
-  bodyElement.classList.remove("background-window1", "background-window2", "background-window3", "background-window4");
-  bodyElement.classList.add(`background-window${windowNumber}`);
-}
-
 function changeWindow(windowNumber, event) {
   if (event) {
     event.preventDefault();

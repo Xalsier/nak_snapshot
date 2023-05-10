@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
     mainContent.style.pointerEvents = 'auto';
     leaveButton.style.display = 'none';
     proceedButton.style.display = 'none';
+    changeWindow(currentWindow); // call this function here after user clicks proceed
   }
-  
 
   leaveButton.addEventListener('click', () => {
     window.location.href = 'https://www.google.com'; // Replace this with the desired URL to redirect to when the user chooses to leave

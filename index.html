@@ -10,9 +10,9 @@
   <script src="./js/lib/js-yaml.min.js"></script>
   <script src="./js/translations.js"></script>
   <script src="./js/bak_cw.js"></script>
+  <script src="./js/perf/window.js"></script>
   <script src="./js/perf/footer.js"></script>
-  <script src="./js/perf/bak_load.js" defer></script>
-  <script src="./js/window.js" defer></script></head><body>     
+  <script src="./js/perf/bak_load.js" defer></script></head><body>     
   <main id="main-content">
   <section id="window1" class="window"><div class="tab" id="calendar-month-year"></div><div class="window-content">
   <div id="calendar-navigation"></div>
@@ -37,14 +37,14 @@
     <option value="./obs/zsasz.html" data-translate="article_002"></option>>Zsasz</option>
   </select></div>
   <div class="window-content"></div></section>
-<section id="window4" class="window"><div class="tab"><p>パチンコ</p></div>
+<section id="window4" class="window"><div class="tab" data-translate="pachinko">パチンコ</div>
   <div class="window-content">
     <canvas id="leftCanvas" width="30" height="300">&lt;</canvas>
     <canvas id="pachinkoCanvas" width="300" height="300"></canvas>
     <canvas id="rightCanvas" width="30" height="300">&gt;</canvas></div>
     <script type="module" src="./js/pac/pac_app.js" defer></script></section></main>
 <footer id="footer-placeholder">Na'kioku © 2023 Xalsier Kitsune. All rights reserved.</footer>
-<div id="background-image" style="position:fixed; width:100%; height:100%; z-index:-1;"></div>
+<div id="background-image"></div>
 <div id="content-warning">
   <div id="warning-text">
     <p data-translate="content_warning">このページには成人向けコンテンツが含まれています</p>

@@ -164,14 +164,6 @@ hr
     display: none;
 }
 
-@media print 
-{
-    #sidebar, .sideabr-right, .sidebar-left, .outline-container, .theme-toggle, .theme-toggle-inline, .toggle__fill, .toggle__input
-    {
-        display: none !important;
-    }
-}
-
 @media screen and (max-width: 350px) and (min-width: 0px)
 {
 	*
@@ -204,23 +196,6 @@ hr
 		font-size: 0.9rem;
 	}
 }
-
-@media screen and (max-width: 800px)
-{
-    #sidebar, .sideabr-right, .sidebar-left, .outline-container
-    {
-        display: none !important;
-    }
-}
-
-@media screen and (max-width: 950px)
-{
-    .sidebar-left
-    {
-        display: none !important;
-    }
-}
-
 
 
 .outline-item {

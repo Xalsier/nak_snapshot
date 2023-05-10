@@ -42,6 +42,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   translations = await loadTranslations();
-  const defaultLanguage = 'en-JP';
+  const defaultLanguage = 'ja';
   updateText(defaultLanguage, translations);
 });

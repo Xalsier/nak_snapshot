@@ -1,6 +1,6 @@
 # Na'kioku
 
-![Screenshot of the website.](./ass/site_ss.png)
+![Screenshot of the website.](https://cdn.discordapp.com/attachments/1098740627191107594/1106039211750068265/site_ss.png)
 
 ## Content Warning & Considerations.
 

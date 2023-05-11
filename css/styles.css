@@ -14,3 +14,4 @@
 nav.ribbon .dropdown-content a.calendar::before {content: "\25CF";margin-right: 8px;animation: rainbow 2s infinite ease;will-change: color;}
 .vibrate {animation: vibrate 0.5s infinite;will-change: transform;}
 .blink {animation: blink 2s infinite;will-change: opacity;}
+.transition-filters {transition: filter 2s;}

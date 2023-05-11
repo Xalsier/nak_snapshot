@@ -7,11 +7,8 @@ function showEventImage(imageList, position) {
   if (!eventImageContainer) {
     eventImageContainer = document.createElement('div');
     eventImageContainer.className = 'event-image-container';
-    document.body.appendChild(eventImageContainer);
-  }
-
-  async function loadImage(src) {
-    try {
+    document.body.appendChild(eventImageContainer);}
+  async function loadImage(src) {try {
       const img = new Image();
       img.src = src;
       await img.decode();
@@ -20,25 +17,14 @@ function showEventImage(imageList, position) {
       return true;
     } catch (error) {
       console.log(`Error loading image: ${src}`);
-      return false;
-    }
-  }
-
+      return false;}}
   (async () => {
     for (const image of imageList) {
       const success = await loadImage(image.src);
-      if (success) break;
-    }
-  })();
-
+      if (success) break;}})();
   eventImageContainer.style.left = `${position.right}px`;
-  eventImageContainer.style.top = `${position.top}px`;
-}
-function hideEventImage() {
-  if (eventImageContainer) {
-    eventImageContainer.innerHTML = '';
-  }
-}
+  eventImageContainer.style.top = `${position.top}px`;}
+function hideEventImage() {if (eventImageContainer) {eventImageContainer.innerHTML = '';}}
 function createCalendar(events, daysInMonth, year, month) {
   const calendarContainer = document.createElement('div');
   calendarContainer.className = 'calendar-container';
@@ -46,15 +32,13 @@ function createCalendar(events, daysInMonth, year, month) {
     const calendarWeekday = document.createElement('div');
     calendarWeekday.className = 'calendar-weekday';
     calendarWeekday.textContent = weekday;
-    calendarContainer.appendChild(calendarWeekday);
-  });
+    calendarContainer.appendChild(calendarWeekday);});
   const firstDayOfMonth = getFirstDayOfMonth(year, month);
   const eventKeys = Object.keys(events);
   for (let i = 0; i < firstDayOfMonth; i++) {
     const emptyDay = document.createElement('div');
     emptyDay.className = 'calendar-day empty';
-    calendarContainer.appendChild(emptyDay);
-  }
+    calendarContainer.appendChild(emptyDay);}
   let i = 1;
   while (i <= daysInMonth) {
     const calendarDay = document.createElement('div');
@@ -63,8 +47,7 @@ function createCalendar(events, daysInMonth, year, month) {
     calendarDay.innerHTML = `<span>${i}</span>`;
     if (isToday(year, month, i)) {
       calendarDay.classList.add('today');
-      calendarDay.classList.add('vibrate');
-    }    
+      calendarDay.classList.add('vibrate');}    
     if (isPastDate(year, month, i)) calendarDay.classList.add('past');
     const eventKey = `${year}-${(month + 1).toString().padStart(2, '0')}-${i.toString().padStart(2, '0')}`;
     if (eventKeys.includes(eventKey)) {
@@ -72,27 +55,16 @@ function createCalendar(events, daysInMonth, year, month) {
       calendarDay.classList.add(`event-day-${eventData.type}`);
       if (eventData.images) {
         calendarDay.addEventListener('mouseenter', () => {
-          showEventImage(eventData.images, calendarDay.getBoundingClientRect());
-        });
-        calendarDay.addEventListener('mouseleave', () => {
-          hideEventImage();
-        });
-      }
-    }
-    calendarContainer.appendChild(calendarDay);
-    i++;
-  }
-  return calendarContainer;
-}
+          showEventImage(eventData.images, calendarDay.getBoundingClientRect());});
+        calendarDay.addEventListener('mouseleave', () => {hideEventImage();});}}
+    calendarContainer.appendChild(calendarDay);i++;}return calendarContainer;}
 function setCalendarMonthYear(year, month) {
   const calendarMonthYear = document.getElementById('calendar-month-year');
   if (calendarMonthYear) {
     const yearMultiplier = 12;
     const totalMonths = (year) * yearMultiplier + month + 1;
     calendarMonthYear.innerHTML = '';
-    calendarMonthYear.textContent = totalMonths;
-  }
-}
+    calendarMonthYear.textContent = totalMonths;}}
 window.addEventListener('load', async () => {
   events = await fetchEvents();
   currentDate = new Date();
@@ -101,17 +73,12 @@ window.addEventListener('load', async () => {
   if (previousMonthButton) {
     previousMonthButton.addEventListener('click', () => {
       currentDate.setMonth(currentDate.getMonth() - 1);
-      updateCalendar(currentDate);
-    });
-  }
+      updateCalendar(currentDate);});}
   const nextMonthButton = document.getElementById('next-month');
   if (nextMonthButton) {
     nextMonthButton.addEventListener('click', () => {
       currentDate.setMonth(currentDate.getMonth() + 1);
-      updateCalendar(currentDate);
-    });
-  }
-});
+      updateCalendar(currentDate);});}});
 async function updateCalendar(date) {
   const year = date.getFullYear();
   const month = date.getMonth();
@@ -123,9 +90,7 @@ async function updateCalendar(date) {
   if (calendarWrapper) {
     calendarWrapper.innerHTML = '';
     calendarWrapper.appendChild(calendar);
-    updateEventColors(events, year, month);
-  }
-}
+    updateEventColors(events, year, month);}}
 function darkenColor(color, ratio) {
   const colorInt = parseInt(color.replace('#', ''), 16);
   const r = (colorInt >> 16) & 255;
@@ -135,37 +100,27 @@ function darkenColor(color, ratio) {
   const newG = Math.round(Math.max(0, g * (1 - ratio)));
   const newB = Math.round(Math.max(0, b * (1 - ratio)));
   const newColorInt = (newR << 16) | (newG << 8) | newB;
-  return `#${newColorInt.toString(16).padStart(6, '0')}`;
-}
+  return `#${newColorInt.toString(16).padStart(6, '0')}`;}
 function findEvent(events, year, month, day) {
   return events.find(event => {
     const eventDate = new Date(`${event.date}T00:00:00.000Z`);
     const offset = eventDate.getTimezoneOffset() * 60000;
     const adjustedEventDate = new Date(eventDate.getTime() + offset);
-    return adjustedEventDate.getFullYear() === year && adjustedEventDate.getMonth() === month && adjustedEventDate.getDate() === day;
-  }) || null;
-}
-// Modify fetchEvents() to load the image data along with the event data
-async function fetchEvents() {
-  try {
+    return adjustedEventDate.getFullYear() === year && adjustedEventDate.getMonth() === month && adjustedEventDate.getDate() === day;}) || null;}
+async function fetchEvents() {try {
     const response = await fetch('../events.json');
     const data = await response.json();
     return data.events;
   } catch (error) {
     console.error('Error fetching events:', error);
-    return {};
-  }
-}
-async function fetchEventColors() {
-  try {
+    return {};}}
+async function fetchEventColors() {try {
     const response = await fetch('../events.json');
     const data = await response.json();
     return data.eventColors;
   } catch (error) {
     console.error('Error fetching event colors:', error);
-    return {};
-  }
-}
+    return {};}}
 async function updateEventColors(events, year, month) {
   console.log('Updating event colors');
   const eventKeys = Object.keys(events);
@@ -173,8 +128,7 @@ async function updateEventColors(events, year, month) {
   const calendarDays = document.querySelectorAll('.calendar-day');
   const eventDays = Array.from(calendarDays).filter(day => {
     const eventDayClass = Array.from(day.classList).find(cls => cls.startsWith('event-day-'));
-    return eventDayClass !== undefined;
-  });
+    return eventDayClass !== undefined;});
   eventDays.forEach(eventDay => {
     const day = parseInt(eventDay.getAttribute('data-day'), 10);
     eventDay.style.backgroundColor = '';
@@ -182,24 +136,13 @@ async function updateEventColors(events, year, month) {
     if (eventKeys.includes(eventKey)) {
       const eventType = events[eventKey];
       const eventColor = eventColors[eventType.type];
-      if (eventColor) {
-        if (isPastDate(year, month, day)) {
-          // Apply past event colors
+      if (eventColor) {if (isPastDate(year, month, day)) {
           eventDay.style.backgroundColor = darkenColor(eventColor.background, 0.8);
-          eventDay.style.color = eventColor.background;
-        } else {
-          // Apply normal event colors
+          eventDay.style.color = eventColor.background;} else {
           eventDay.style.backgroundColor = eventColor.background;
-          eventDay.style.color = eventColor.color;
-        }
-      }
-    }
+          eventDay.style.color = eventColor.color;}}}
     if (isToday(year, month, day)) {
-      // Remove the darkened effect for "today" with an event
       eventDay.style.backgroundColor = eventColors[events[eventKey]].background;
-      eventDay.style.color = eventColors[events[eventKey]].color;
-    }
-  });
-}
+      eventDay.style.color = eventColors[events[eventKey]].color;}});}
 const initialDate = new Date();
 updateCalendar(initialDate);

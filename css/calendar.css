@@ -10,3 +10,6 @@
 .empty {background-color: transparent;}
 .past {background-color: #270000;color:#e0e0e076;}
 .today {background-color: #ff4d4d;color: black;}
+.event-image-container {position: absolute;z-index: 1000;}
+.event-image-container img {max-width: 200px;max-height: 200px;}
+.calendar-day:hover .event-image-container {display: block;}

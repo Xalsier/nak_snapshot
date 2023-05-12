@@ -17,30 +17,21 @@ const pins = new Pins(canvas.width, pegCountRows, canvas.height);
 const pegs = pins.pegs;
 const pockets = new Pockets(canvas.width, holeCount, canvas.height);
 const holes = pockets.getHoles();
-const leftCanvas = document.getElementById('leftCanvas');
-const leftCtx = leftCanvas.getContext('2d');
-const rightCanvas = document.getElementById('rightCanvas');
-const rightCtx = rightCanvas.getContext('2d');
 let score = 0;
 let balls = [];
 let lastTime = performance.now();
 let ballLimit = 3;
 let ballsLeft = 3;
-let ballRefillTime = 7000;
+let ballRefillTime = 5000;
 let lastBallRefill = Date.now();
+let ballElements = Array.from(document.querySelectorAll('.ball'));
 function drawHighScoreMeter() {
-  const meterHeight = (score / 100) * leftCanvas.height;
-  leftCtx.clearRect(0, 0, leftCanvas.width, leftCanvas.height);
-  leftCtx.fillStyle = 'white';
-  leftCtx.fillRect(0, leftCanvas.height - meterHeight, leftCanvas.width, meterHeight);}
-function drawAvailableBalls() {
-  rightCtx.clearRect(0, 0, rightCanvas.width, rightCanvas.height);
-  for (let i = 0; i < ballsLeft; i++) {
-    rightCtx.beginPath();
-    rightCtx.arc(rightCanvas.width / 2, rightCanvas.height - (i * ballRadius * 6) - 10, ballRadius * 2, 0, Math.PI * 2);
-    rightCtx.fillStyle = 'white';
-    rightCtx.fill();
-    rightCtx.closePath();}}
+  const container = document.getElementById('container');
+  const meterHeight = (score / 100) * container.offsetHeight;
+  document.getElementById('heat').style.height = `${meterHeight}px`;}
+function drawAvailableBalls() {for (let i = 0; i < ballLimit; i++) {
+if (i < ballsLeft) {ballElements[i].classList.remove('inactive');ballElements[i].classList.add('active');
+} else {ballElements[i].classList.remove('active');ballElements[i].classList.add('inactive');}}}
 function checkBallRefill() {if (Date.now() - lastBallRefill >= ballRefillTime && ballsLeft < ballLimit) {ballsLeft++;lastBallRefill = Date.now();}}
 function drawSperm(ball) {
 ctx.beginPath();
@@ -103,10 +94,15 @@ function updateBall(ball, elapsedTime) {
   ball.speedY += gravity * elapsedTime;
   checkCollisions(ball);
   drawSperm(ball);}
-canvas.addEventListener('click', function (event) {if (ballsLeft > 0) {ballsLeft--;resetBall();}});
-function draw() {
+  canvas.addEventListener('click', function(event) {
+    if (ballsLeft > 0 && balls.length < ballLimit) {
+      ballsLeft--;
+      resetBall();
+    }
+  });
+  function draw() {
   const currentTime = performance.now();
-  const elapsedTime = (currentTime - lastTime) / 1000 * 60; // Get elapsed time in seconds
+  const elapsedTime = (currentTime - lastTime) / 1000 * 60;
   lastTime = currentTime;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   balls.forEach((ball) => updateBall(ball, elapsedTime));

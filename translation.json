@@ -12,8 +12,7 @@
       "copyright_1": "Na'kioku © 2023",
       "copyright_2": "All rights reserved.",
       "background_art_by": "Background art by",
-      "discord": "Discord",
-      "pachinko": "Pachinko"
+      "discord": "Discord"
     },
     "ja": {
       "proceed": "進む",
@@ -28,8 +27,7 @@
       "copyright_1": "Na'kioku © 2023",
       "copyright_2": "全著作権所有権保有。",
       "background_art_by": "背景アート制作者：",
-      "discord": "ディスコード",
-      "pachinko": "パチンコ"
+      "discord": "ディスコード"
     },
     "es": {
       "proceed": "Continuar",
@@ -44,7 +42,6 @@
       "copyright_1": "Na'kioku © 2023",
       "copyright_2": "Todos los derechos reservados.",
       "background_art_by": "Arte de fondo por",
-      "discord": "Discord",
-      "pachinko": "Pachinko"
+      "discord": "Discord"
     }
   }  

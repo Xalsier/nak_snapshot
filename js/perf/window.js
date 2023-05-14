@@ -1,4 +1,4 @@
-const NUMBER_OF_WINDOWS = 4;
+const NUMBER_OF_WINDOWS = 3;
 let currentWindow = 1;
 function makeWindowsVisible() {
 for (let i = 1; i <= NUMBER_OF_WINDOWS; i++) {document.getElementById(`window${i}`).style.display = 'inline-block';}}

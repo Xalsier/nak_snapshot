@@ -13,3 +13,5 @@
 .event-image-container {position: absolute;z-index: 1000;}
 .event-image-container img {max-width: 200px;max-height: 200px;}
 .calendar-day:hover .event-image-container {display: block;}
+.vibrate {animation: vibrate 0.5s infinite;will-change: transform;}
+.blink {animation: blink 2s infinite;will-change: opacity;}

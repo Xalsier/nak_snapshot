@@ -1,0 +1,9 @@
+#footerContainer {bottom: -90px;transition: bottom 0.5s;}
+#toggle-footer:checked ~ #footerContainer {bottom: 0;}
+#help-button {position: absolute;bottom: 100%;left: 50%;transform: translate(-50%, 50%);translate: 0px 30px;width: 40px;height: 40px;cursor: pointer;z-index: 2000;} 
+#footer-content {position: absolute;transform: translate(-50%, 50%);bottom: 100%;left: 50%;translate: 0px 120px;}
+#help-button svg {width: 50px;height: 50px;}
+#help-button circle, #help-button line {fill: none;stroke: #ff4d4d;stroke-width: 2;stroke-linecap: round;stroke-linejoin: round;}
+footer {position: fixed;bottom: -90px;left: 50%;transform: translateX(-50%);width: 100%;max-width: 800px;height: 100px;background: transparent;color: #ff4d4d;text-align: left;padding: 20px;font-size: 0.9rem;z-index: 1000;transition: bottom 0.5s;padding-top: 50px;}
+.red-link {color: #ff4d4d;text-decoration: none; font-weight: bold; text-shadow: 2px 2px 3px #240303;}
+.red-link:hover {color: #868686;text-decoration: underline;}  

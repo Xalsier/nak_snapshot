@@ -1,93 +1,130 @@
-<!DOCTYPE html><html lang="ja"><head><title>Na'kioku</title>
-  <link rel="shortcut icon" type="image/x-icon" href="./ass/favicon.ico">
+<!DOCTYPE html>
+  <html lang="ja">
+  <head>
+  <title>Na'kioku</title>
+  <link rel="shortcut icon" type="image/x-icon" href="fav.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Webnovel for the Island of Lost Memories">
+  <meta name="description" content="Official webpage for the Na'kioku webnovel.">
+  <meta name="keywords" content="Furry, Webnovel">
   <meta name="author" content="Xalsier Kitsune">
   <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="./css/styles.css">
-  <script src="./js/translations.js"></script>
-  <script src="./js/perf/window.js"></script>
-  <script src="./js/perf/bak_load.js" defer></script></head><body>  
-  <div id="filter-layer"></div>   
-  <main id="main-content">
-
-  <section id="window1" class="window">
-  <div class="tab" id="calendar-month-year"></div><div class="window-content">
-  <div id="calendar-navigation"></div>
-  <button id="previous-month">&lt;</button>
-  <div id="calendar"></div>
-  <button id="next-month">&gt;</button></div>
-<script src="./js/calendar.js" defer></script>
-</section>
-
-<section id="window2" class="window">
-<iframe id="novel-content-area" class="loaded-content" width="450px" height="600px"></iframe>
-  <div id="chapter-selector" class="tab">
-  <select id="novel-html-selector">
-    <option value="" data-translate="chapter_select">章を選択してください</option>
-    <option value="./obs/chapter001.html" data-translate="chapter_001">第1話</option>
-    <option value="./obs/chapter002.html" data-translate="chapter_002">第2話</option>
-  </select>
-</div>
-<div class="window-content"></div>
-</section>
-
-<section id="window3" class="window">
-<iframe id="codex-content-area" class="loaded-content" width="450px" height="600px"></iframe>
-<div id="page-selector" class="tab">
-  <select id="codex-html-selector">
-    <option value="" data-translate="article_select">記事を選択してください</option>
-    <option value="./obs/nester.html" data-translate="article_001">ネスター</option>
-    <option value="./obs/zsasz.html" data-translate="article_002">ザズ</option>
-  </select></div>
-  <div class="window-content"></div>
-</section>
-
-
-</main>
-<input type="checkbox" id="toggle-footer" style="display: none;">
-<footer id="footerContainer">
-  <label id="help-button" for="toggle-footer">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="12" y1="16" x2="12" y2="12"></line>
-        <line x1="12" y1="8" x2="12" y2="8"></line>
-    </svg>
-</label>
- <div id="footer-content">
-    <a href="https://discord.gg/uzPGC2k3kp" 
-        target="_blank" 
-        rel="noopener" 
-        class="red-link"
-        data-translate="discord">ディスコード</a>
-    <p>
-       <span data-translate="copyright_1">Na'kioku © 2023</span>
-       <a class="red-link" 
-          target="_blank" 
-          rel="noopener" 
-          href="https://twitter.com/Xalsier">Xalsier Kitsune</a>. 
-       <span data-translate="copyright_2">全著作権所有権保有。</span>
-    </p>
-    <p>
-       <span data-translate="background_art_by">Background art by</span> 
-       <a href="https://twitter.com/dimitridstvsk" 
-          class="red-link" 
-          target="_blank" 
-          rel="noopener">Dimitri Dostoiévski</a>.
-       <select id="language-selector">
-          <option value="ja">日本語</option>
-          <option value="en">English</option>
-          <option value="es">Español</option>
-       </select>
-    </p>
- </div>
-</footer>
-<input type="checkbox" id="content-warning-toggle" style="display: none;">
-<div id="background-image"></div>
-<div id="content-warning">
-  <div id="warning-text"><p data-translate="content_warning">このページには成人向けコンテンツが含まれています</p></div>
-  <div id="actions">
-    <label for="content-warning-toggle" id="proceed" data-translate="proceed">続行</label>
-    <a id="leave" data-translate="leave" href="https://www.google.com">離れる</a>
-  </div></div></body></html>
+  <link rel="stylesheet" href="sty.css">
+  </head>
+  <body> 
+    <input type="checkbox" id="content-warning-toggle" style="display: none;">
+    <div id="content-warning">
+      <div id="warning-text">
+        <p data-translate="content_warning">このページには成人向けコンテンツが含まれています</p>
+      </div>
+      <div id="actions">
+        <label for="content-warning-toggle" id="proceed" data-translate="proceed">続行</label>
+        <a id="leave" data-translate="leave" href="https://www.google.com">離れる</a>
+      </div>
+    </div>
+    <div id="filter-layer"></div>
+    <div id="background-image">
+      <script>
+        (async () => {
+          const bgi = document.getElementById('background-image');
+          for (const i of '01234') {
+            const src = `ass/s${i}.jpg`;
+            const img = new Image();
+            await new Promise((resolve) => {
+              img.onload = () => {
+                bgi.style.setProperty('background-image', `url('${src}')`);
+                resolve();
+              };
+              img.src = src;});}})();
+      </script>
+    </div>
+    <main id="main-content">
+      <div id="window-container">
+        <section class="window">
+          <div class="tab" id="calendar-month-year"></div>
+            <div class="window-content">
+              <div id="calendar-navigation"></div>
+              <button id="previous-month">&lt;</button>
+              <div id="calendar"></div>
+              <button id="next-month">&gt;</button>
+            </div>
+          <script src="cal.js" defer></script>
+        </section>
+        <section class="window">
+          <iframe id="codex-content-area" class="loaded-content" width="450px" height="600px"></iframe>
+          <div id="page-selector" class="tab">
+            <select id="codex-html-selector">
+              <option value="" data-translate="article_select">記事を選択してください</option>
+              <option value="./obs/nester.html" data-translate="article_001">ネスター</option>
+              <option value="./obs/zsasz.html" data-translate="article_002">ザズ</option>
+            </select>
+          </div>
+          <div class="window-content"></div>
+        </section>
+        <section class="window">
+          <iframe id="novel-content-area" class="loaded-content" width="450px" height="600px"></iframe>
+          <div id="chapter-selector" class="tab">
+            <select id="novel-html-selector">
+              <option value="" data-translate="chapter_select">章を選択してください</option>
+              <option value="./obs/chapter001.html" data-translate="chapter_001">第1話</option>
+              <option value="./obs/chapter002.html" data-translate="chapter_002">第2話</option>
+            </select>
+          </div>
+          <div class="window-content"></div>
+        </section>
+      </div>
+    </main>
+    <input type="checkbox" id="toggle-footer" style="display: none;">
+    <footer id="footerContainer">
+      <label id="help-button" for="toggle-footer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12" y2="8"></line>
+        </svg>
+      </label>
+      <div id="footer-content">
+        <a href="https://discord.gg/uzPGC2k3kp" 
+            target="_blank" 
+            rel="noopener" 
+            class="red-link"
+            data-translate="discord">ディスコード</a>
+        <p>
+          <span data-translate="copyright_1">Na'kioku © 2023</span>
+          <a class="red-link" 
+              target="_blank" 
+              rel="noopener" 
+              href="https://twitter.com/Xalsier">Xalsier Kitsune</a>. 
+          <span data-translate="copyright_2">全著作権所有権保有。</span>
+        </p>
+        <p>
+          <span data-translate="background_art_by">背景アート制作者：</span> 
+          <a href="https://twitter.com/dimitridstvsk" 
+              class="red-link" 
+              target="_blank" 
+              rel="noopener">Dimitri Dostoiévski</a>.
+          <select id="language-selector">
+              <option value="ja">日本語</option>
+              <option value="en">English</option>
+              <option value="es">Español</option>
+          </select>
+        </p>
+        <script>
+          let t;
+          (async () => {
+            let s = document.getElementById('language-selector');
+            if (s) {
+              s.addEventListener('change', async (e) => {
+                let l = e.target.value;
+                t = t || (await (await fetch('translation.json')).json());
+                document.querySelectorAll('[data-translate]').forEach((e) => {
+                  e.innerText = t[l][e.getAttribute('data-translate')];
+                });
+              });
+            }
+          })();
+        </script>
+      </div>
+    </footer>    
+</body>
+</html>

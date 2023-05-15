@@ -88,7 +88,8 @@ iframe {border: none;}
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: 53 /* adjust as needed */
+    z-index: 53;
+    pointer-events: none;
 }
 #warning-text p {color: #ff4d4d;font-size: 1.2rem;margin-bottom: 20px;text-shadow: 2px 2px 3px #240303;}
 /* Style the buttons */
@@ -103,6 +104,8 @@ iframe {border: none;}
     display: inline-block;
     text-decoration: none;
     transition: background-color 0.3s;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 #actions {
     display: flex;

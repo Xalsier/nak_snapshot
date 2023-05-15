@@ -1,27 +1,8 @@
-let translations;
-
-async function loadTranslations() {
-    const response = await fetch('../translation.json');
-    return await response.json();
-}
-
-function updateText(language, translations) {
-    const elementsToTranslate = document.querySelectorAll('[data-translate]');
-    elementsToTranslate.forEach(element => {
-        const translationKey = element.getAttribute('data-translate');
-        element.innerText = translations[language][translationKey];
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const languageSelector = document.getElementById('language-selector');
-    if (languageSelector) {
-        languageSelector.addEventListener('change', async (event) => {
-            const selectedLanguage = event.target.value;
-            if (!translations) {
-                translations = await loadTranslations();
-            }
-            updateText(selectedLanguage, translations);
-        });
-    }
-});
+let t;
+document.addEventListener('DOMContentLoaded',async()=>{
+    let s=document.getElementById('language-selector');
+    s&&s.addEventListener('change',async e=>{
+        let l=e.target.value;
+        t=t||await(await fetch('../translation.json')).json();
+        document.querySelectorAll('[data-translate]').forEach(e=>{
+            e.innerText=t[l][e.getAttribute('data-translate')]})})})

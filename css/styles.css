@@ -6,12 +6,10 @@
 @font-face {font-family: 'VT323';font-style: normal;font-weight: 400;font-display: swap;src: url(../woff2/pxiKyp0ihIEF2isQFJXGdg.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;} /* latin */
 @keyframes rotateIn {0% {opacity: 0;transform: rotateY(-45deg);}100% {opacity: 1;transform: rotateY(0deg) translateX(-47%);}}
 @keyframes rotateOut {0% {transform: rotate(0deg);}100% {transform: rotate(3deg) translateX(-47%) translateY(10px);}}
-@keyframes rainbow {0% {color: #ff4d4d;}25% {color: #ff60e4;}50% {color: #55fc55;}100% {color: #7070ff;}}
 @keyframes vibrate {0% {transform: translate(0);}50% {transform: translate(-1px, 1px);}100% {transform: translate(0);}}
 @keyframes blink {0%, 100% {opacity: 1;}50% {opacity: 0;}}
 .window.active {opacity: 1;z-index: 50;animation: rotateIn 0.5s forwards;}
 .window.inactive {opacity: 0.5;z-index: 0;pointer-events: none;animation: rotateOut 0.5s forwards;}
-nav.ribbon .dropdown-content a.calendar::before {content: "\25CF";margin-right: 8px;animation: rainbow 2s infinite ease;will-change: color;}
 .vibrate {animation: vibrate 0.5s infinite;will-change: transform;}
 .blink {animation: blink 2s infinite;will-change: opacity;}
 .transition-filters {transition: filter 2s;}

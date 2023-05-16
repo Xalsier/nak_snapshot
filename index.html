@@ -44,7 +44,6 @@
             </select>
           </div>
           <div class="window-content">
-            
           </div>
         </section>
         <section class="window">
@@ -97,21 +96,7 @@
               <option value="es">Español</option>
           </select>
         </p>
-        <script>
-          let t;
-          (async () => {
-            let s = document.getElementById('language-selector');
-            if (s) {
-              s.addEventListener('change', async (e) => {
-                let l = e.target.value;
-                t = t || (await (await fetch('tra.json')).json());
-                document.querySelectorAll('[data-translate]').forEach((e) => {
-                  e.innerText = t[l][e.getAttribute('data-translate')];
-                });
-              });
-            }
-          })();
-        </script>
+        <script>let t;(async()=>{let e=document.getElementById("language-selector");e&&e.addEventListener("change",async e=>{let a=e.target.value;t=t||await (await fetch("tra.json")).json(),document.querySelectorAll("[data-translate]").forEach(e=>{e.innerText=t[a][e.getAttribute("data-translate")]})})})();</script>
       </div>
     </footer>    
 </body>

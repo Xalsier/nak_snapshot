@@ -10,6 +10,7 @@
   <meta name="author" content="Xalsier Kitsune">
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="sty.css">
+  <script src="cal.js" defer></script>
   </head>
   <body> 
     <input type="checkbox" id="content-warning-toggle" style="display: none;">
@@ -23,54 +24,41 @@
       </div>
     </div>
     <div id="filter-layer"></div>
-    <div id="background-image">
-      <script>
-        (async () => {
-          const bgi = document.getElementById('background-image');
-          for (const i of '01234') {
-            const src = `ass/s${i}.jpg`;
-            const img = new Image();
-            await new Promise((resolve) => {
-              img.onload = () => {
-                bgi.style.setProperty('background-image', `url('${src}')`);
-                resolve();
-              };
-              img.src = src;});}})();
-      </script>
-    </div>
     <main id="main-content">
       <div id="window-container">
         <section class="window">
           <div class="tab" id="calendar-month-year"></div>
             <div class="window-content">
-              <div id="calendar-navigation"></div>
               <button id="previous-month">&lt;</button>
               <div id="calendar"></div>
               <button id="next-month">&gt;</button>
             </div>
-          <script src="cal.js" defer></script>
         </section>
         <section class="window">
           <iframe id="codex-content-area" class="loaded-content" width="450px" height="600px"></iframe>
           <div id="page-selector" class="tab">
             <select id="codex-html-selector">
               <option value="" data-translate="article_select">記事を選択してください</option>
-              <option value="./obs/nester.html" data-translate="article_001">ネスター</option>
-              <option value="./obs/zsasz.html" data-translate="article_002">ザズ</option>
+              <option value="" data-translate="article_001">ネスター</option>
+              <option value="" data-translate="article_002">ザズ</option>
             </select>
           </div>
-          <div class="window-content"></div>
+          <div class="window-content">
+            
+          </div>
         </section>
         <section class="window">
           <iframe id="novel-content-area" class="loaded-content" width="450px" height="600px"></iframe>
           <div id="chapter-selector" class="tab">
             <select id="novel-html-selector">
               <option value="" data-translate="chapter_select">章を選択してください</option>
-              <option value="./obs/chapter001.html" data-translate="chapter_001">第1話</option>
-              <option value="./obs/chapter002.html" data-translate="chapter_002">第2話</option>
+              <option value="" data-translate="chapter_001">第1話</option>
+              <option value="" data-translate="chapter_002">第2話</option>
             </select>
           </div>
-          <div class="window-content"></div>
+          <div class="window-content">
+
+          </div>
         </section>
       </div>
     </main>
@@ -116,7 +104,7 @@
             if (s) {
               s.addEventListener('change', async (e) => {
                 let l = e.target.value;
-                t = t || (await (await fetch('translation.json')).json());
+                t = t || (await (await fetch('tra.json')).json());
                 document.querySelectorAll('[data-translate]').forEach((e) => {
                   e.innerText = t[l][e.getAttribute('data-translate')];
                 });

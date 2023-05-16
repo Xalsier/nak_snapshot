@@ -1,8 +1,7 @@
-#calendar-navigation {display: flex;align-items: center;justify-content: center;}
 #previous-month,#next-month {height: 100%;width: 40px;border: none;background: none;font-size: 30px;color: #000000;}
 #previous-month:hover,#next-month:hover {color: #949494;}
 #calendar {display: inline-block;padding: 20px;background: transparent;text-align: center;width: 100%;}
-.calendar-container {display: grid;grid-template-columns: repeat(7, 1fr [col-start]);gap: 10px;margin: 0 auto;align-items: center;justify-content: center;}
+.calendar-container {display: grid;grid-template-columns: repeat(7, 1fr [col-start]);gap: 10px;margin: 0 auto;}
 .calendar-day {background-color: #ff4d4d;border-radius: 5px;text-align: center;cursor: pointer;font-size: 1.2rem;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);width: calc(100% - 10px);padding-top: calc(100% - 10px);position: relative;transition: transform 0.3s ease;color: #000000;}
 .calendar-day > span {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
 .calendar-day:hover {transform: translateY(3px);}
@@ -15,3 +14,13 @@
 .calendar-day:hover .event-image-container {display: block;}
 .vibrate {animation: vibrate 0.5s infinite;will-change: transform;}
 .blink {animation: blink 2s infinite;will-change: opacity;}
+.event-1 {background-color: #ff60e4;color: #000000;}
+.event-2 {background-color: #55fc55;color: #000000;}
+.event-3 {background-color: #7070ff;color: #000000;}
+.event-4 {background-color: #55f9fc;color: #000000;}
+.event-5 {background-color: #fcd755;color: #000000;}
+.past-event-1 {background-color: #41173a;color: #ff60e4;}
+.past-event-2 {background-color: #164416;color: #55fc55;}
+.past-event-3 {background-color: #1d1d40;color: #7070ff;}
+.past-event-4 {background-color: #113131;color: #55f9fc;}
+.past-event-5 {background-color: #3f3614;color: #fcd755;}

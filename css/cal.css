@@ -4,7 +4,7 @@
 .calendar-container {display: grid;grid-template-columns: repeat(7, 1fr [col-start]);gap: 10px;margin: 0 auto;}
 .calendar-day {background-color: #ff4d4d;border-radius: 5px;text-align: center;cursor: pointer;font-size: 1.2rem;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);width: calc(100% - 10px);position: relative;transition: transform 0.3s ease;color: #000000;}
 .calendar-day:hover {transform: translateY(3px);}
-.calendar-weekday {font-weight: bold;text-align: center;padding: 10px;visibility: visible;}
+.calendar-weekday {font-weight: bold;text-align: center;padding: 10px;visibility: visible;color: rgb(0, 0, 0);}
 .empty {background-color: transparent;}
 .past {background-color: #270000;color:#e0e0e076;}
 .today {background-color: #ff4d4d;color: black;}
@@ -23,3 +23,6 @@
 .past-event-3 {background-color: #1d1d40;color: #7070ff;}
 .past-event-4 {background-color: #113131;color: #55f9fc;}
 .past-event-5 {background-color: #3f3614;color: #fcd755;}
+#cal-box {display: flex;width: 450px;margin: 0 auto;}
+.cal-window {scroll-snap-align: start;display: flex;justify-content: center;align-items: center;margin: 0 20px;position: relative;background-color: transparent;border-radius: 10px;box-sizing: border-box;}
+#calendar-month-year {font-size: 1.5rem;font-weight: bold;margin-bottom: 10px;}

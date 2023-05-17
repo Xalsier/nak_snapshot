@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <html lang="ja">
+  <html lang="en">
   <head>
   <title>Na'kioku</title>
   <link rel="shortcut icon" type="image/x-icon" href="fav.ico">
@@ -16,49 +16,23 @@
     <input type="checkbox" id="content-warning-toggle" style="display: none;">
     <div id="content-warning">
       <div id="warning-text">
-        <p data-translate="content_warning">このページには成人向けコンテンツが含まれています</p>
+        <p>This page may in the future contain mature content.</p>
+        <p>(Right now there's just a calendar.)</p>
       </div>
       <div id="actions">
-        <label for="content-warning-toggle" id="proceed" data-translate="proceed">続行</label>
-        <a id="leave" data-translate="leave" href="https://www.google.com">離れる</a>
+        <label for="content-warning-toggle" id="proceed">Proceed</label>
+        <a id="leave" href="https://www.google.com">Leave</a>
       </div>
     </div>
     <div id="filter-layer"></div>
     <main id="main-content">
-      <div id="window-container">
-        <section class="window">
-          <div class="tab" id="calendar-month-year"></div>
-            <div class="window-content">
-              <button id="previous-month">&lt;</button>
-              <div id="calendar"></div>
-              <button id="next-month">&gt;</button>
-            </div>
-        </section>
-        <section class="window">
-          <iframe id="codex-content-area" class="loaded-content" width="450px" height="600px"></iframe>
-          <div id="page-selector" class="tab">
-            <select id="codex-html-selector">
-              <option value="" data-translate="article_select">記事を選択してください</option>
-              <option value="" data-translate="article_001">ネスター</option>
-              <option value="" data-translate="article_002">ザズ</option>
-            </select>
-          </div>
-          <div class="window-content">
-          </div>
-        </section>
-        <section class="window">
-          <iframe id="novel-content-area" class="loaded-content" width="450px" height="600px"></iframe>
-          <div id="chapter-selector" class="tab">
-            <select id="novel-html-selector">
-              <option value="" data-translate="chapter_select">章を選択してください</option>
-              <option value="" data-translate="chapter_001">第1話</option>
-              <option value="" data-translate="chapter_002">第2話</option>
-            </select>
-          </div>
-          <div class="window-content">
-
-          </div>
-        </section>
+      <div id="calendar-month-year"></div>
+      <div id="cal-box">
+        <div class="cal-window">
+          <button id="previous-month">&lt;</button>
+          <div id="calendar"></div>
+          <button id="next-month">&gt;</button>
+        </div>
       </div>
     </main>
     <input type="checkbox" id="toggle-footer" style="display: none;">
@@ -75,28 +49,22 @@
             target="_blank" 
             rel="noopener" 
             class="red-link"
-            data-translate="discord">ディスコード</a>
+            data-translate="discord">Discord</a>
         <p>
           <span data-translate="copyright_1">Na'kioku © 2023</span>
           <a class="red-link" 
               target="_blank" 
               rel="noopener" 
               href="https://twitter.com/Xalsier">Xalsier Kitsune</a>. 
-          <span data-translate="copyright_2">全著作権所有権保有。</span>
+          <span data-translate="copyright_2">All rights reserved.</span>
         </p>
         <p>
-          <span data-translate="background_art_by">背景アート制作者：</span> 
+          <span data-translate="background_art_by">Background art by:</span> 
           <a href="https://twitter.com/dimitridstvsk" 
               class="red-link" 
               target="_blank" 
               rel="noopener">Dimitri Dostoiévski</a>.
-          <select id="language-selector">
-              <option value="ja">日本語</option>
-              <option value="en">English</option>
-              <option value="es">Español</option>
-          </select>
         </p>
-        <script>let t;(async()=>{let e=document.getElementById("language-selector");e&&e.addEventListener("change",async e=>{let a=e.target.value;t=t||await (await fetch("tra.json")).json(),document.querySelectorAll("[data-translate]").forEach(e=>{e.innerText=t[a][e.getAttribute("data-translate")]})})})();</script>
       </div>
     </footer>    
 </body>

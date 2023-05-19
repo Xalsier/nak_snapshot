@@ -4,7 +4,9 @@
 .cc {display: grid;grid-template-columns: repeat(7, 1fr [col-start]);gap: 10px;margin: 0 auto;}
 .cd {background-color: #ff4d4d;border-radius: 5px;text-align: center;cursor: pointer;font-size: 1.2rem;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);width: calc(100% - 10px);position: relative;transition: transform 0.3s ease;color: #000000;}
 .cd:hover {transform: translateY(3px);}
-.cw {font-weight: bold;text-align: center;padding: 10px;visibility: visible;color: rgb(0, 0, 0);}
+.cw {display: flex;
+    justify-content: center;
+    align-items: center;font-weight: bold;text-align: center;padding: 10px;visibility: visible;color: rgb(0, 0, 0);}
 .empty {background-color: transparent;}
 .past {background-color: #270000;color:#e0e0e076;}
 .today {background-color: #ff4d4d;color: black;animation: vibrate 0.5s infinite;}
@@ -26,3 +28,12 @@
 #cal-box {display: flex;width: 450px;margin: 0 auto;}
 .cal-window {scroll-snap-align: start;display: flex;justify-content: center;align-items: center;margin: 0 20px;position: relative;background-color: transparent;border-radius: 10px;box-sizing: border-box;}
 #cmy {font-size: 1.5rem;font-weight: bold;margin-bottom: 10px;}
+#wd {
+    display: grid;
+    grid-template-columns: auto repeat(7, 1fr [col-start]);
+    font-size: 1.2rem;
+    margin: 0 auto;
+    gap: 2px;
+    text-align: center;
+    width: 289.33px;
+  }

@@ -3,7 +3,8 @@
 #ca {display: inline-block;padding: 20px;background: transparent;text-align: center;width: 100%;}
 .cc {display: grid;grid-template-columns: repeat(7, 1fr [col-start]);gap: 10px;margin: 0 auto;}
 .cd {background-color: #ff4d4d;border-radius: 5px;text-align: center;cursor: pointer;font-size: 1.2rem;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);width: calc(100% - 10px);position: relative;transition: transform 0.3s ease;color: #000000;[data-day] {display: block;}}
-.cd:hover {transform: translateY(3px);}
+@keyframes bounce {0%, 100% {transform: scale(1.0);}50% {transform: scale(1.2);}}
+.cd:hover {animation: bounce 0.6s ease-in-out;}
 .cw {display: flex;justify-content: center;align-items: center;font-weight: bold;text-align: center;padding: 10px;visibility: visible;color: rgb(0, 0, 0); translate: 0px 40px;}
 .empty {background-color: transparent;}
 .past {background-color: #270000;color:#e0e0e076;}
@@ -24,8 +25,8 @@
 .cal-window {scroll-snap-align: start;display: flex;justify-content: center;align-items: center;margin: 0 20px;position: relative;background-color: transparent;border-radius: 10px;box-sizing: border-box;}
 #cmy {font-size: 1.5rem;font-weight: bold;margin-bottom: 10px; translate: 0px 60px;}
 #wd {display: grid;grid-template-columns: auto repeat(7, 1fr [col-start]);font-size: 1.2rem;margin: 0 auto;gap: 2px;text-align: center;width: 289.33px;}
-#cal-item {transform: translateY(100%) rotateX(90deg);transform-origin: bottom;transition: transform 0.3s ease;}
-#cal-toggle:checked ~ #cal-item {transform: translateY(0) rotateX(0);}
+#cal-item {transform: translateY(150%) rotateY(180deg);transform-origin: bottom;transition: transform 0.7s ease;}
+#cal-toggle:checked ~ #cal-item {transform: translateY(0) rotateY(0);}
 #cal-toggle-button {position: absolute;bottom: 100%;left: 50%;translate: 60px 60px;cursor: pointer;z-index: 10;display: flex;align-items: center;justify-content: center;width: 40px;height: 40px;background-color: #ffffff;border-radius: 50%;box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);transition: transform 0.3s ease;transform: rotate(180deg);}
 #cal-toggle:checked ~ #cal-toggle-button {transform: rotate(0deg);}
 #cal-toggle-button svg {width: 24px;height: 24px;}

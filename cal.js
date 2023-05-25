@@ -1,13 +1,17 @@
 事 = {
-  "2023-01-25": {"type": 3}, // Placeholder Event
-  "2023-01-27": {"type": 3}, // Placeholder Event
-  "2023-04-16": {"type": 4}, // Placeholder Event
-  "2023-04-28": {"type": 3}, // Placeholder Event
-  "2023-04-30": {"type": 2}, // Placeholder Event
-  "2023-05-07": {"type": 5}, // Placeholder Event
-  "2023-05-13": {"type": 5}, // Placeholder Event
-  "2023-05-16": {"type": 5}, // Placeholder Event
-  "2023-05-17": {"type": 5} // Placeholder Event
+  "2023-05-02": {"type": 1}, // Snapshot Event
+  "2023-05-03": {"type": 1}, // Snapshot Event
+  "2023-05-06": {"type": 1}, // Snapshot Event
+  "2023-05-07": {"type": 1}, // Snapshot Event
+  "2023-05-08": {"type": 1}, // Snapshot Event
+  "2023-05-09": {"type": 1}, // Snapshot Event
+  "2023-05-11": {"type": 1}, // Snapshot Event
+  "2023-05-12": {"type": 1}, // Snapshot Event
+  "2023-05-14": {"type": 1}, // Snapshot Event
+	"2023-05-15": {"type": 1}, // Snapshot Event
+	"2023-05-16": {"type": 1}, // Snapshot Event
+	"2023-05-19": {"type": 1}, // Snapshot Event
+	"2023-05-24": {"type": 1} // Snapshot Event
 };
 // Code Golfed Calendar // < 1000 Characters //
 日 = (e, n) => new Date(e, n, 1).getDay();

@@ -16,8 +16,8 @@
     <input type="checkbox" id="content-warning-toggle" style="display: none;">
     <div id="content-warning">
       <div id="warning-text">
-        <p>This page may in the future contain mature content.</p>
-        <p>(Right now there's just a calendar.)</p>
+        <p>Snapshot 0.4.0</p>
+        <p>(No webnovel yet, but one is in the works!)</p>
       </div>
       <div id="actions">
         <label for="content-warning-toggle" id="proceed">Proceed</label>
@@ -26,33 +26,41 @@
     </div>
     <div id="filter-layer"></div>
     <main id="main-content">
-      <div id="cmy"></div>
-      <div id="wd">
-        <div class="cw">日</div>
-        <div class="cw">月</div>
-        <div class="cw">火</div>
-        <div class="cw">水</div>
-        <div class="cw">木</div>
-        <div class="cw">金</div>
-        <div class="cw">土</div>
-      </div>
-      <div id="cal-box">
-        <div class="cal-window">
-          <button id="pm">«</button>
-          <div id="ca"></div>
-          <button id="nm">»</button>
+      <input type="checkbox" id="cal-toggle" style="display: none;">
+      <label for="cal-toggle" id="cal-toggle-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm0 14c-2.21 0-4-1.79-4-4h2c0 1.1.9 2 2 2s2-.9 2-2h2c0 2.21-1.79 4-4 4zm0-8c-1.1 0-2-.9-2-2H8c0 2.21 1.79 4 4 4s4-1.79 4-4h-2c0 1.1-.9 2-2 2zm0-4c1.1 0 2 .9 2 2H8c0-1.1.9-2 2-2z"></path>
+        </svg>
+      </label>
+      <div id="cal-item">
+        <div id="cmy"></div>
+        <div id="wd">
+          <div class="cw">日</div>
+          <div class="cw">月</div>
+          <div class="cw">火</div>
+          <div class="cw">水</div>
+          <div class="cw">木</div>
+          <div class="cw">金</div>
+          <div class="cw">土</div>
+        </div>
+        <div id="cal-box">
+          <div class="cal-window">
+            <button id="pm">«</button>
+            <div id="ca"></div>
+            <button id="nm">»</button>
+          </div>
         </div>
       </div>
     </main>
     <input type="checkbox" id="toggle-footer" style="display: none;">
+    <label id="help-button" for="toggle-footer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="16" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12" y2="8"></line>
+      </svg>
+    </label>
     <footer id="footerContainer">
-      <label id="help-button" for="toggle-footer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="16" x2="12" y2="12"></line>
-          <line x1="12" y1="8" x2="12" y2="8"></line>
-        </svg>
-      </label>
       <div id="footer-content">
         <a href="https://discord.gg/uzPGC2k3kp" 
             target="_blank" 

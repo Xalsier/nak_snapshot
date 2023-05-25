@@ -1,4 +1,4 @@
-#footerContainer {bottom: -90px;transition: bottom 0.5s;}
+#footerContainer {bottom: -90px;transition: bottom 0.5s; z-index: 2000;}
 #toggle-footer:checked ~ #footerContainer {bottom: 0;}
 #help-button {position: absolute;bottom: 100%;left: 50%;transform: translate(-50%, 50%);translate: 0px 30px;width: 40px;height: 40px;cursor: pointer;z-index: 2000;} 
 #footer-content {position: absolute;transform: translate(-50%, 50%);bottom: 100%;left: 50%;translate: 0px 120px;}

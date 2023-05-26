@@ -126,4 +126,5 @@
 #warning-text {
   -webkit-animation: dropBounce 0.5s ease-in-out;
   animation: dropBounce 0.5s ease-in-out;
+	color: white;
 }

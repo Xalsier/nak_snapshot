@@ -95,4 +95,22 @@
     pointer-events: none;
     transition: backdrop-filter 0.5s ease-in-out;
   }
-  
+  /* Add this to your CSS */
+@keyframes dropBounce {
+  0% {
+    transform: translateY(-400px) rotate(0deg);
+  }
+  60% {
+    transform: translateY(30px) rotate(0deg);
+  }
+  80% {
+    transform: translateY(-1px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+}
+
+#warning-text p {
+  animation: dropBounce 0.5s ease-in-out;
+}

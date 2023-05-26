@@ -1,17 +1,17 @@
 事 = {
-  "2023-05-02": {"type": 1}, // Snapshot Event
-  "2023-05-03": {"type": 1}, // Snapshot Event
-  "2023-05-06": {"type": 1}, // Snapshot Event
-  "2023-05-07": {"type": 1}, // Snapshot Event
-  "2023-05-08": {"type": 1}, // Snapshot Event
-  "2023-05-09": {"type": 1}, // Snapshot Event
-  "2023-05-11": {"type": 1}, // Snapshot Event
-  "2023-05-12": {"type": 1}, // Snapshot Event
-  "2023-05-14": {"type": 1}, // Snapshot Event
-	"2023-05-15": {"type": 1}, // Snapshot Event
-	"2023-05-16": {"type": 1}, // Snapshot Event
-	"2023-05-19": {"type": 1}, // Snapshot Event
-	"2023-05-24": {"type": 1} // Snapshot Event
+  "2023-05-02": {"type": 1}, // Snapshot 0.3.2
+  "2023-05-03": {"type": 1}, // Snapshot 0.3.5 - 0.3.4 - 0.3.3
+  "2023-05-06": {"type": 1}, // Snapshot 0.3.6
+  "2023-05-07": {"type": 1}, // Snapshot 0.3.6.5
+  "2023-05-08": {"type": 1}, // Snapshot 0.3.8 - 0.3.7
+  "2023-05-09": {"type": 1}, // Snapshot 0.4.0 - 0.3.9
+  "2023-05-11": {"type": 1}, // Snapshot 0.4.1
+  "2023-05-12": {"type": 1}, // Snapshot 0.4.2
+  "2023-05-14": {"type": 1}, // Snapshot 0.4.4 - 0.4.3
+	"2023-05-15": {"type": 1}, // Snapshot 0.4.6 - 0.4.5
+	"2023-05-16": {"type": 1}, // Snapshot 0.4.8 - 0.4.7
+	"2023-05-19": {"type": 1}, // Snapshot 0.4.9
+	"2023-05-24": {"type": 1} // Snapshot 0.5.0
 };
 // Code Golfed Calendar // < 1000 Characters //
 日 = (e, n) => new Date(e, n, 1).getDay();

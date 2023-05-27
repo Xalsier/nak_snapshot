@@ -22,13 +22,13 @@
 .past-event-4 {background-color: #113131;color: #55f9fc;}
 .past-event-5 {background-color: #3f3614;color: #fcd755;}
 #cal-box {display: flex;width: 450px;margin: 0 auto;}
-.cal-window {scroll-snap-align: start;display: flex;justify-content: center;align-items: center;margin: 0 20px;position: relative;background-color: transparent;border-radius: 10px;box-sizing: border-box;}
+.cal-window {display: flex;justify-content: center;align-items: center;margin: 0 20px;position: relative;background-color: transparent;border-radius: 10px;box-sizing: border-box;}
 #cmy {font-size: 1.5rem;font-weight: bold;margin-bottom: 10px; translate: 0px 60px;}
 #wd {display: grid;grid-template-columns: auto repeat(7, 1fr [col-start]);font-size: 1.2rem;margin: 0 auto;gap: 2px;text-align: center;width: 289.33px;}
-#cal-item {transform: translateY(150%) rotateY(180deg);transform-origin: bottom;transition: transform 0.7s ease;}
-#cal-toggle:checked ~ #cal-item {transform: translateY(0) rotateY(0);}
-#cal-toggle-button {position: absolute;bottom: 100%;left: 50%;translate: 60px 60px;cursor: pointer;z-index: 10;display: flex;align-items: center;justify-content: center;width: 40px;height: 40px;background-color: #ffffff;border-radius: 50%;box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);transition: transform 0.3s ease;transform: rotate(180deg);}
-#cal-toggle:checked ~ #cal-toggle-button {transform: rotate(0deg);}
-#cal-toggle-button svg {width: 24px;height: 24px;}
-#cal-toggle-button:hover {background-color: #f2f2f2;}
-#cal-toggle-button:focus {outline: none;}
+#cal-item {
+    transition: transform 0.7s ease;
+    position: fixed; /* Add this line to position the cal-item independently */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(150%) rotateY(180deg); /* Adjust the translation values */
+  }

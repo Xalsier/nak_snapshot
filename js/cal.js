@@ -11,7 +11,8 @@
 	"2023-05-15": {"type": 1}, // Snapshot 0.4.6 - 0.4.5
 	"2023-05-16": {"type": 1}, // Snapshot 0.4.8 - 0.4.7
 	"2023-05-19": {"type": 1}, // Snapshot 0.4.9
-	"2023-05-24": {"type": 1} // Snapshot 0.5.0
+	"2023-05-24": {"type": 1}, // Snapshot 0.5.0
+  "2023-05-27": {"type": 1} // Snapshot 0.5.1
 };
 // Code Golfed Calendar // < 1000 Characters //
 日 = (e, n) => new Date(e, n, 1).getDay();
@@ -27,13 +28,14 @@
     Array.from({ length: n }, (_, n) => n + 1).forEach(n => {
       let o = 書[元]("div"),
         c = e[`${a}-${(s + 1 + "").padStart(2, "0")}-${(n + "").padStart(2, "0")}`],
-        t = new Date(a, s, n).setHours(0,0,0,0) == 初.setHours(0,0,0,0); // Ignore the time, just compare the dates.
-      o[名] = `cd ${古(a, s, n) ? "past " + `past-event-${c?.type}` : `event-${c?.type}`} ${t ? "today" : ""}`,
+        t = new Date(a, s, n).setHours(0, 0, 0, 0) == 初.setHours(0, 0, 0, 0); // Ignore the time, just compare the dates.
+      o[名] = `cd ${t && c ? `event-${c.type}` : 古(a, s, n) ? "past " + `past-event-${c?.type}` : ""} ${t ? "today" : ""}`,
       o.innerHTML = n,
       d.appendChild(o);
     });
   return d;
 };
+
 面 = null;
 初 = new Date(); // This now always represents today's date
 表示 = new Date(); // This new object will represent the displayed date

@@ -2,11 +2,60 @@
 @import url('../css/cwf.css');
 @import url('../css/fot.css');
 @import url('../css/cal.css');
-@font-face {font-family: 'VT323';font-style: normal;font-weight: 400;font-display: swap;src: url(woff2/pxiKyp0ihIEF2isQFJXGdg.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
-@keyframes vibrate {0% {transform: translate(0);}50% {transform: translate(-1px, 1px);}100% {transform: translate(0);}}
-@keyframes blink {0%, 100% {opacity: 1;}50% {opacity: 0;}}
-body {background-color: #000000;background-image: url("https://cdn.discordapp.com/attachments/1098740627191107594/1107934255314649168/s4.jpg");background-repeat: no-repeat;background-position: -300px -600px;position: relative;color: #310e0e;text-align: center;margin: 0;min-width: 500px;overflow: hidden;}
-p {font-family: 'VT323', monospace;color: #ffffff;filter: blur(0.3px);word-wrap: break-word;overflow-wrap: break-word;margin: 0.1em 0;}
-strong {font-family: 'VT323', monospace;color: #ff4d4d;text-shadow: 0px 0px 10px rgba(255, 77, 77, 0.719);}
-div {padding: 5px;}
-#main-content {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 50;}
+@font-face {
+    font-family: 'VT323';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(woff2/pxiKyp0ihIEF2isQFJXGdg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@keyframes vibrate {
+    0% { transform: translate(0); }
+    50% { transform: translate(-1px, 1px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+body {
+    background-color: #000000;
+    background-image: url("./he3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #310e0e;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+p {
+    font-family: 'VT323', monospace;
+    color: #ffffff;
+    filter: blur(0.3px);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin: 0.1em 0;
+}
+
+strong {
+    font-family: 'VT323', monospace;
+    color: #ff4d4d;
+    text-shadow: 0px 0px 10px rgba(255, 77, 77, 0.719);
+}
+
+div {
+    padding: 5px;
+}

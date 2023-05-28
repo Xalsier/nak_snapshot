@@ -35,7 +35,6 @@
     });
   return d;
 };
-
 面 = null;
 初 = new Date(); // This now always represents today's date
 表示 = new Date(); // This new object will represent the displayed date

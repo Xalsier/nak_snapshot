@@ -63,7 +63,7 @@ function animateLoadingBar(loadingBar) {
 
 function finalizeLoading(loadingBar) {
     document.body.removeChild(loadingBar);
-    autoCheckWarningToggle(document.querySelector('#content-warning-toggle')); // Toggle the content warning only after the loading bar hits 100%
+    autoCheckWarningToggle(document.querySelector('#content-warning-toggle'));
 }
 
 function syncToggleStates(contentWarningToggle, calendarToggle) {
@@ -75,21 +75,17 @@ function syncToggleStates(contentWarningToggle, calendarToggle) {
         });
     }
 }
-
 function autoCheckWarningToggle(contentWarningToggle) {
-    if(contentWarningToggle) {
+    if (contentWarningToggle) {
         contentWarningToggle.checked = true;
-        let event = new Event('change');
-        contentWarningToggle.dispatchEvent(event);
+        contentWarningToggle.dispatchEvent(new Event('change'));
     }
 }
-
 function getTriviaByTime() {
     const date = new Date();
     const index = ((date.getHours() * SECONDS_PER_HOUR) + (date.getMinutes() * SECONDS_PER_MINUTE) + date.getSeconds()) % trivia.length; 
     return trivia[index];
 }
-
 function displayTrivia() {
     const triviaElement = document.getElementById('warning-text');
     if (triviaElement) {
@@ -98,4 +94,4 @@ function displayTrivia() {
         triviaElement.insertAdjacentHTML('beforeend', selectedTrivia.replace(/\n/g, '<br>'));
     }
 }
-window.onload = init;
+init();

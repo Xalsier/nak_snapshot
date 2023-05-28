@@ -1,5 +1,4 @@
 "use strict";
-// Constants
 const LOADING_TIME_MS = 3000;
 const INITIAL_LOADING_MS = 2000; // 2 seconds for initial loading up to 80%
 const FINAL_LOADING_MS = 1000; // 1 second for final loading from 80% to 100%
@@ -13,7 +12,6 @@ const trivia = [
     "Placeholder Trivia 3",
 ];
 let isBgImageLoaded = false; // Flag for background image load status
-
 function init() {
     const contentWarningToggle = document.querySelector('#content-warning-toggle');
     const calendarToggle = document.querySelector('#cal-toggle');
@@ -21,19 +19,16 @@ function init() {
     syncToggleStates(contentWarningToggle, calendarToggle);
     displayTrivia();
 }
-
 function createAndDisplayLoadingBar() {
     const loadingBar = createLoadingBar();
     document.body.appendChild(loadingBar);
     loadBackgroundImage(loadingBar);
 }
-
 function createLoadingBar() {
     const loadingBar = document.createElement('div');
     loadingBar.classList.add('loading-bar');
     return loadingBar;
 }
-
 function loadBackgroundImage(loadingBar) {
     let img = new Image();
     img.onload = () => {
@@ -43,7 +38,6 @@ function loadBackgroundImage(loadingBar) {
     img.src = BACKGROUND_IMAGE_PATH;
     animateLoadingBar(loadingBar); // Move animateLoadingBar call here
 }
-
 function animateLoadingBar(loadingBar) {
     loadingBar.style.width = '0%';
     requestAnimationFrame(() => {
@@ -60,12 +54,10 @@ function animateLoadingBar(loadingBar) {
         }
     }, INITIAL_LOADING_MS);
 }
-
 function finalizeLoading(loadingBar) {
     document.body.removeChild(loadingBar);
     autoCheckWarningToggle(document.querySelector('#content-warning-toggle'));
 }
-
 function syncToggleStates(contentWarningToggle, calendarToggle) {
     if (contentWarningToggle && calendarToggle) {
         contentWarningToggle.addEventListener('change', () => {
@@ -75,12 +67,7 @@ function syncToggleStates(contentWarningToggle, calendarToggle) {
         });
     }
 }
-function autoCheckWarningToggle(contentWarningToggle) {
-    if (contentWarningToggle) {
-        contentWarningToggle.checked = true;
-        contentWarningToggle.dispatchEvent(new Event('change'));
-    }
-}
+function autoCheckWarningToggle(contentWarningToggle) {contentWarningToggle?.click();}  
 function getTriviaByTime() {
     const date = new Date();
     const index = ((date.getHours() * SECONDS_PER_HOUR) + (date.getMinutes() * SECONDS_PER_MINUTE) + date.getSeconds()) % trivia.length; 

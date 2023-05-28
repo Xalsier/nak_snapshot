@@ -25,22 +25,29 @@
 
 body {
     background-color: #000000;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%), url("./he3.jpg");
+    background-image: url("./he3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: -450px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    justify-content: flex-start; /* Adjusted from center */
     color: #310e0e;
     text-align: center;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    height: 100%; /* Adjusted from min-height: 100vh; */
 }
 
+/* Media query for mobile devices */
+@media screen and (max-width: 480px) {
+    body {
+        background-size: 230%;
+        background-position: -100px -75px;
+    }
+}
 
 p {
     font-family: 'VT323', monospace;

@@ -17,14 +17,10 @@ nav {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: #000000;
   border-radius: 50%;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-}
-
-#cal-toggle-button:hover, #help-button:hover, #dark-mode-button:hover {
-  background-color: #f2f2f2;
 }
 
 #cal-toggle-button:focus, #help-button:focus, #dark-mode-button:focus {
@@ -44,7 +40,7 @@ nav {
 }
 
 #toggle-footer:checked ~ #footerContainer {
-  bottom: 10px;
+  bottom: 5px;
 }
 
 #cal-toggle:checked ~ #cal-item {

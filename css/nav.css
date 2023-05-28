@@ -4,7 +4,7 @@ nav {
   justify-items: center;
   position: fixed;
   width: 100%;
-  top: 10px;
+  bottom: 20px; /* Adjusted from top: 10px; to bottom: 10px; */
 }
 
 .button-group {
@@ -17,7 +17,7 @@ nav {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  background-color: #000000;
+  background-color: #ffffff;
   border-radius: 50%;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
@@ -40,7 +40,7 @@ nav {
 }
 
 #toggle-footer:checked ~ #footerContainer {
-  bottom: 5px;
+  bottom: 100px; /* Adjusted from bottom: 5px; to top: 5px; */
 }
 
 #cal-toggle:checked ~ #cal-item {

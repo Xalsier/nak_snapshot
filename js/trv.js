@@ -11,7 +11,7 @@ if (contentWarningToggle && footerToggle && calendarToggle) { // null-checking
 }
 const trivia = [
     "Placeholder Trivia 1",
-    "<span class='highlight-1'>24544</span>/<span class='highlight-2'>3</span>/<span class='highlight-3'>44°</span>\nA lunar dating system that tracks\nthe <span class='highlight-1'>month</span>, <span class='highlight-2'>phase</span>, and <span class='highlight-3'>angle</span>.",
+    "<span class='highlight-3'>24544</span>/<span class='highlight-2'>34%</span>\nA lunar dating system that tracks\nthe <span class='highlight-3'>month</span> and <span class='highlight-2'>lumination</span>.",
     "Placeholder Trivia 3",
 ];
 function getTriviaByTime() {

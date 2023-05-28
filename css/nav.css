@@ -1,43 +1,68 @@
-#help-button svg {width: 50px;height: 50px;}
-#help-button circle, #help-button line {fill: none;stroke: #000000;stroke-width: 2;stroke-linecap: round;stroke-linejoin: round;}
-#cal-toggle-button svg {width: 24px;height: 24px;}
-#cal-toggle-button:hover {background-color: #f2f2f2;}
-#cal-toggle-button:focus {outline: none;}
-#help-button {
-    position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    z-index: 2000;
-  }
-  #cal-toggle-button {
-    position: fixed;
-    top: 10px;
-    right: 45%;
-    transform: translateX(-50%);
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    transform: rotate(180deg);
-  }
-  #toggle-footer:checked ~ #footerContainer {bottom: 10px;}
-  #cal-toggle:checked ~ #cal-item {
-    transform: translate(-50%, -50%) translateY(0) rotateY(0); /* Adjust the translation values */
-  }
-  
-  #cal-toggle:checked ~ #cal-toggle-button {
-    transform: rotate(0deg);
-  }
-  
-#cal-toggle:checked ~ #cal-toggle-button {transform: rotate(0deg);}
+nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  justify-items: center;
+  position: fixed;
+  width: 100%;
+  top: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+#cal-toggle-button, #help-button, #dark-mode-button {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+#cal-toggle-button:hover, #help-button:hover, #dark-mode-button:hover {
+  background-color: #f2f2f2;
+}
+
+#cal-toggle-button:focus, #help-button:focus, #dark-mode-button:focus {
+  outline: none;
+}
+
+#cal-toggle:checked ~ nav #cal-toggle-button,
+#toggle-footer:checked ~ nav #help-button,
+#dark-mode-toggle:checked ~ nav #dark-mode-button {
+  transform: scale(1);
+}
+
+#cal-toggle:not(:checked) ~ nav #cal-toggle-button,
+#toggle-footer:not(:checked) ~ nav #help-button,
+#dark-mode-toggle:not(:checked) ~ nav #dark-mode-button {
+  transform: scale(0.5);
+}
+
+#toggle-footer:checked ~ #footerContainer {
+  bottom: 10px;
+}
+
+#cal-toggle:checked ~ #cal-item {
+  transform: translate(-50%, -50%) translateY(0) rotateY(0);
+}
+#dark-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -10;
+  opacity: 0;
+  pointer-events: none;  /* Elements are not clickable */
+  transition: opacity 1s ease-in-out;
+}
+
+#dark-mode-toggle:checked ~ #dark-overlay {
+  opacity: 1;
+}

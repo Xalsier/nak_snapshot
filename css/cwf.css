@@ -103,3 +103,12 @@
   color: magenta;
   text-shadow: 0 0 10px magenta, 0 0 20px magenta, 0 0 30px magenta, 0 0 40px magenta;
 }
+.loading-bar {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  height: 10px;
+  z-index: 9999;
+  width: 0%;
+  background-color: white;
+}

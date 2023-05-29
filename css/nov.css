@@ -6,26 +6,39 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     opacity: 0;
-    pointer-events: none;
     transition: opacity 1s ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 2em;
-    text-align: center;
-}
-
-
-.chapter {
+    text-align: left;
+    overflow: hidden; /* Add this */
+  }
+  
+  .chapter {
+    max-height: 85vh; /* Adjust this as needed */
+    overflow-y: auto; /* Add this */
     margin-bottom: 2em;
     color: white;
-}
-
-.paragraph {
-    font-family: monospace;
-    white-space: pre;
-    overflow: hidden;
-    border-right: .15em solid;
-    width: 0;
-}
+    top: 0;
+    line-height: 1.5; /* Adjust as needed */
+    font-size: 0.9rem;
+  }
+  
+  .chapter::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .chapter::-webkit-scrollbar-track {
+    background: transparent; 
+    border-radius: 10px; 
+  }
+  
+  .chapter::-webkit-scrollbar-thumb {
+    background: #ff4d4d;
+    border-radius: 10px; 
+  }
+  
+  .chapter::-webkit-scrollbar-thumb:hover {
+    background: #922c2c;
+  }

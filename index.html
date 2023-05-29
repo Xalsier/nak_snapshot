@@ -14,8 +14,11 @@
     <link rel="stylesheet" href="../css/fot.css">
     <link rel="stylesheet" href="../css/cal.css">
     <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/nov.css">
     <script src="./js/trv.js" async></script>
     <script src="./js/cal.js" async></script>
+    <script src="./js/par_app/nov.js" type="module" async></script>
+    <script src="./js/par_app/par.js" type="module" async></script>
   </head>
   <body> 
     <input type="checkbox" id="content-warning-toggle" style="display: none;">
@@ -26,9 +29,11 @@
     <nav>
       <div></div> <!-- Empty div for first column -->
       <div class="button-group">
+        <button id="prev-button" class="page-turn-button"></button>
         <label for="cal-toggle" id="cal-toggle-button" aria-label="Toggle calendar"></label>
+        <label for="dark-mode-toggle" id="dark-mode-button" aria-label="Toggle dark mode"></label>
         <label id="help-button" for="toggle-footer" aria-label="Toggle footer"></label>
-        <label for="dark-mode-toggle" id="dark-mode-button" aria-label="Toggle dark mode"></label>        
+        <button id="next-button" class="page-turn-button"></button>         
       </div>
       <div></div> <!-- Empty div for third column -->
     </nav>
@@ -60,9 +65,10 @@
         <div id="cal-box">
           <div class="cal-window"><div id="ca"></div></div>
         </div>
-        <button id="pm">«</button>
-        <button id="nm">»</button>
+        <button id="pm"></button>
+        <button id="nm"></button>
       </div>
+    <div id="dark-overlay"></div>          
     <footer id="footerContainer">
         <span>Na'kioku © 2023</span>
         <a class="red-link" 
@@ -75,7 +81,6 @@
           class="red-link" 
           target="_blank" 
           rel="noopener">Dimitri Dostoiévski</a>.
-    </footer>
-    <div id="dark-overlay"></div>    
+    </footer>  
 </body>
 </html>

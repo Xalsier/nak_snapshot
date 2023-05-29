@@ -5,6 +5,7 @@ nav {
   position: fixed;
   width: 100%;
   bottom: 20px; /* Adjusted from top: 10px; to bottom: 10px; */
+  z-index: 8000;
 }
 
 .button-group {
@@ -46,19 +47,44 @@ nav {
 #cal-toggle:checked ~ #cal-item {
   transform: translate(-50%, -50%) translateY(0) rotateY(0);
 }
-#dark-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: -10;
-  opacity: 0;
-  pointer-events: none;  /* Elements are not clickable */
-  transition: opacity 1s ease-in-out;
-}
 
 #dark-mode-toggle:checked ~ #dark-overlay {
   opacity: 1;
 }
+
+#pm,#nm {  
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 50%;}
+
+  .page-turn-button {
+    position: fixed;
+    bottom: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #prev-button {
+    left: 20px;
+  }
+  
+  #next-button {
+    right: 20px;
+  }
+  
+  #prev-button::before,
+  #next-button::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+  }
+  

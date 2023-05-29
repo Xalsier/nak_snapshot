@@ -1,0 +1,31 @@
+#dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2em;
+    text-align: center;
+}
+
+
+.chapter {
+    margin-bottom: 2em;
+    color: white;
+}
+
+.paragraph {
+    font-family: monospace;
+    white-space: pre;
+    overflow: hidden;
+    border-right: .15em solid;
+    width: 0;
+}

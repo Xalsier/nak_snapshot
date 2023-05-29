@@ -12,7 +12,8 @@
 	"2023-05-16": {"type": 1}, // Snapshot 0.4.8 - 0.4.7
 	"2023-05-19": {"type": 1}, // Snapshot 0.4.9
 	"2023-05-24": {"type": 1}, // Snapshot 0.5.0
-  "2023-05-27": {"type": 1} // Snapshot 0.5.1
+  "2023-05-27": {"type": 1}, // Snapshot 0.5.1
+  "2023-05-28": {"type": 1}, // Snapshot 0.5.2
 };
 // Code Golfed Calendar // < 1000 Characters //
 日 = (e, n) => new Date(e, n, 1).getDay();

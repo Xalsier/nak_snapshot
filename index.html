@@ -15,10 +15,32 @@
     <link rel="stylesheet" href="../css/cal.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/nov.css">
+    <script src="./js/lib/showdown.js"></script>
     <script src="./js/trv.js" async></script>
     <script src="./js/cal.js" async></script>
     <script src="./js/par_app/nov.js" type="module" async></script>
     <script src="./js/par_app/par.js" type="module" async></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var calendarToggle = document.getElementById("cal-toggle");
+        var darkOverlayToggle = document.getElementById("dark-mode-toggle");
+        var footerToggle = document.getElementById("toggle-footer");
+  
+        function toggleFooter() {
+          var calendarChecked = calendarToggle.checked;
+          var darkOverlayChecked = darkOverlayToggle.checked;
+  
+          if (!calendarChecked && !darkOverlayChecked) {
+            footerToggle.checked = !footerToggle.checked;
+          } else {
+            footerToggle.checked = false;
+          }
+        }
+  
+        calendarToggle.addEventListener("change", toggleFooter);
+        darkOverlayToggle.addEventListener("change", toggleFooter);
+      });
+    </script>  
   </head>
   <body> 
     <input type="checkbox" id="content-warning-toggle" style="display: none;">
@@ -30,8 +52,7 @@
       <div></div> <!-- Empty div for first column -->
       <div class="button-group">
         <label for="cal-toggle" id="cal-toggle-button" aria-label="Toggle calendar"></label>
-        <label for="dark-mode-toggle" id="dark-mode-button" aria-label="Toggle dark mode"></label>
-        <label id="help-button" for="toggle-footer" aria-label="Toggle footer"></label>     
+        <label for="dark-mode-toggle" id="dark-mode-button" aria-label="Toggle dark mode"></label>     
       </div>
       <div></div> <!-- Empty div for third column -->
     </nav>
@@ -80,6 +101,7 @@
           class="red-link" 
           target="_blank" 
           rel="noopener">Dimitri Dostoiévski</a>.
-    </footer>  
+    </footer>
+    <label id="help-button" for="toggle-footer" aria-label="Toggle footer" style="display: none;"></label>    
 </body>
 </html>

@@ -1,8 +1,11 @@
+import { getWordCount } from './nov.js'; // Import the getWordCount function from nov.js
+
 function createElementWithText(tag, text) {
   const element = document.createElement(tag);
   element.textContent = text;
   return element;
 }
+
 export function createContentWarning(acceptHandler, declineHandler) {
   const contentWarning = createElementWithText('div', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
   contentWarning.className = 'content-warning-2';
@@ -13,6 +16,7 @@ export function createContentWarning(acceptHandler, declineHandler) {
   contentWarning.append(acceptButton, declineButton);
   return contentWarning;
 }
+
 export function createVolumeCard(volumeData, state) {
   const volumeCard = document.createElement('div');
   volumeCard.className = 'volume-card';
@@ -21,7 +25,8 @@ export function createVolumeCard(volumeData, state) {
   const volumeTitle = createElementWithText('h1', volumeData.title);
   const volumeDescription = createElementWithText('p', volumeData.synopsis);
   volumeDescription.className = 'volume-description'; // Add this line to assign the CSS class
-  const volumeWordCount = createElementWithText('div', `Word Count: ${volumeData.totalWordCount}`);
+  const totalWordCount = volumeData.totalWordCount;
+  const volumeWordCount = createElementWithText('div', `Word Count: ${totalWordCount}`);
   const imageContainer = document.createElement('div');
   imageContainer.className = 'image-container';
   const volumeImage = document.createElement('img');

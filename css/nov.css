@@ -27,6 +27,15 @@
   font-size: 0.9rem;
   position: relative; /* Add this */
   z-index: 2; /* Add this */
+
+  @media (min-width: 1200px) {
+    width: 50%;
+  }
+
+  /* Media query for tablets and phones */
+  @media (max-width: 1199px) {
+    width: 100%;
+  }
 }
 
 #dark-overlay select {

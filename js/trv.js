@@ -11,10 +11,8 @@ const trivia = [
   "<span class='highlight-3'>24544</span>/<span class='highlight-2'>34%</span>\nA lunar dating system that tracks\nthe <span class='highlight-3'>month</span> and <span class='highlight-2'>lumination</span>.",
   "Placeholder Trivia 3",
 ];
-const announcementTrivia = "<span class='highlight-1'>The webnovel site is still in construction! \nV.0.5.3\nAdded Volume Card</span>";
-
+const announcementTrivia = "<span class='highlight-1'>The webnovel site is still in construction! \nV.0.5.4\nSwitched from Javascript to Markdown for novel</span>";
 let isBgImageLoaded = false; // Flag for background image load status
-
 function init() {
   const contentWarningToggle = document.querySelector('#content-warning-toggle');
   const calendarToggle = document.querySelector('#cal-toggle');
@@ -22,19 +20,16 @@ function init() {
   syncToggleStates(contentWarningToggle, calendarToggle);
   displayTrivia();
 }
-
 function createAndDisplayLoadingBar() {
   const loadingBar = createLoadingBar();
   document.body.appendChild(loadingBar);
   loadBackgroundImage(loadingBar);
 }
-
 function createLoadingBar() {
   const loadingBar = document.createElement('div');
   loadingBar.classList.add('loading-bar');
   return loadingBar;
 }
-
 function loadBackgroundImage(loadingBar) {
   let img = new Image();
   img.onload = () => {
@@ -44,7 +39,6 @@ function loadBackgroundImage(loadingBar) {
   img.src = BACKGROUND_IMAGE_PATH;
   animateLoadingBar(loadingBar); // Move animateLoadingBar call here
 }
-
 function animateLoadingBar(loadingBar) {
   loadingBar.style.width = '0%';
   requestAnimationFrame(() => {
@@ -61,12 +55,10 @@ function animateLoadingBar(loadingBar) {
     }
   }, INITIAL_LOADING_MS);
 }
-
 function finalizeLoading(loadingBar) {
   document.body.removeChild(loadingBar);
   autoCheckWarningToggle(document.querySelector('#content-warning-toggle'));
 }
-
 function syncToggleStates(contentWarningToggle, calendarToggle) {
   if (contentWarningToggle && calendarToggle) {
     contentWarningToggle.addEventListener('change', () => {
@@ -76,17 +68,12 @@ function syncToggleStates(contentWarningToggle, calendarToggle) {
     });
   }
 }
-
-function autoCheckWarningToggle(contentWarningToggle) {
-  contentWarningToggle?.click();
-}
-
+function autoCheckWarningToggle(contentWarningToggle) {contentWarningToggle?.click();}
 function getTriviaByTime() {
   const date = new Date();
   const index = ((date.getHours() * SECONDS_PER_HOUR) + (date.getMinutes() * SECONDS_PER_MINUTE) + date.getSeconds()) % trivia.length;
   return trivia[index];
 }
-
 function displayTrivia() {
   const triviaElement = document.getElementById('warning-text');
   if (triviaElement) {
@@ -95,5 +82,4 @@ function displayTrivia() {
     triviaElement.insertAdjacentHTML('beforeend', announcementTrivia.replace(/\n/g, '<br>') + "<br><br>" + selectedTrivia.replace(/\n/g, '<br>'));
   }
 }
-
 init();

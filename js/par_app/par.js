@@ -1,49 +1,39 @@
 import { novel } from './nov.js';
 import { createContentWarning, createVolumeCard } from './ele.js';
 class NovelState {
-  constructor(initialChapter, volumeCardVisible = true, contentWarningAccepted = false) {
+  constructor(initialChapter, initialVolume, volumeCardVisible = true, contentWarningAccepted = false) {
     this._currentChapter = initialChapter;
+    this._currentVolume = initialVolume;
     this._volumeCardVisible = volumeCardVisible;
     this._contentWarningAccepted = contentWarningAccepted;
+    this.chapterContainer = document.createElement('div');
+    this.chapterContainer.className = 'chapter';
+    document.getElementById('dark-overlay').appendChild(this.chapterContainer);
   }
-  get currentChapter() {
-    return this._currentChapter;
+  get currentChapter() {return this._currentChapter;}
+  set currentChapter(value) {this._currentChapter = value;this.renderContent();}
+  get currentVolume() {return this._currentVolume;}
+  set currentVolume(value) {this._currentVolume = value;this.renderContent();}
+  get volumeCardVisible() {return this._volumeCardVisible;}
+  set volumeCardVisible(value) {this._volumeCardVisible = value;this.renderContent();}
+  get contentWarningAccepted() {return this._contentWarningAccepted;}
+  set contentWarningAccepted(value) {this._contentWarningAccepted = value;this.renderContent();}
+  createElementWithText(tag, text) {
+    const element = document.createElement(tag);
+    element.textContent = text;
+    return element;
   }
-  set currentChapter(value) {
-    this._currentChapter = value;
-    this.renderContent();
-  }
-  get volumeCardVisible() {
-    return this._volumeCardVisible;
-  }
-  set volumeCardVisible(value) {
-    this._volumeCardVisible = value;
-    this.renderContent();
-  }
-  get contentWarningAccepted() {
-    return this._contentWarningAccepted;
-  }
-  set contentWarningAccepted(value) {
-    this._contentWarningAccepted = value;
-    this.renderContent();
-  }
-  renderContent() {
-    chapterContainer.innerHTML = '';
-    if (!this._contentWarningAccepted) {
-      const contentWarning = createContentWarning(
-        () => { this.contentWarningAccepted = true; },
-        () => { window.location.href = 'https://www.google.com'; }
-      );
-      chapterContainer.appendChild(contentWarning);
-      return;
+  renderChapterSelect(chapters) {
+    const chapterSelect = this.createElementWithText('select', '');
+    const defaultOption = this.createElementWithText('option', 'Select a chapter');
+    defaultOption.value = '';
+    chapterSelect.appendChild(defaultOption);
+    for (const chapter in chapters) {
+      const option = this.createElementWithText('option', chapter);
+      option.value = chapter;
+      option.selected = chapter === this.currentChapter;
+      chapterSelect.appendChild(option);
     }
-    if (this._volumeCardVisible) {
-      const volumeCard = createVolumeCard(novel["Volume 1"], this);
-      chapterContainer.appendChild(volumeCard);
-      return;
-    }
-    const paragraphs = novel["Volume 1"].chapters[this.currentChapter];
-    const chapterSelect = createElementWithText('select');
     chapterSelect.addEventListener('change', (event) => {
       const selectedChapter = event.target.value;
       if (selectedChapter !== '') {
@@ -51,43 +41,41 @@ class NovelState {
         this.volumeCardVisible = false;
       }
     });
-    const defaultOption = createElementWithText('option', 'Select a chapter');
-    defaultOption.value = '';
-    chapterSelect.appendChild(defaultOption);
-    for (const chapter in novel["Volume 1"].chapters) {
-      const option = createElementWithText('option', chapter);
-      option.value = chapter;
-      option.selected = chapter === this.currentChapter;
-      chapterSelect.appendChild(option);
+    return chapterSelect;
+  }
+  renderContent() {
+    this.chapterContainer.innerHTML = '';
+    if (!this._contentWarningAccepted) {
+      const contentWarning = createContentWarning(
+        () => { this.contentWarningAccepted = true; },
+        () => { document.getElementById('dark-mode-toggle').click(); }
+      );
+      this.chapterContainer.appendChild(contentWarning);
+      return;
     }
-    const chapterHeader = createElementWithText('h2', this.currentChapter);
-    const paragraphElements = paragraphs.map(paragraph => createElementWithText('p', paragraph));
-    const brElements = Array(paragraphs.length - 1).fill(createElementWithText('br'));
-    const elementsToAppend = [chapterSelect, chapterHeader, ...paragraphElements, ...brElements];
-    chapterContainer.append(...elementsToAppend);
-    const returnButton = createElementWithText('button', 'Return to Volume Select');
+    if (this._volumeCardVisible) {
+      const volumeCard = createVolumeCard(novel[this.currentVolume], this);
+      this.chapterContainer.appendChild(volumeCard);
+      return;
+    }
+    const chapter = novel[this.currentVolume].chapters[this.currentChapter];
+    const chapterSelect = this.renderChapterSelect(novel[this.currentVolume].chapters);
+    const chapterHeader = this.createElementWithText('h2', this.currentChapter);
+    const markdownContent = chapter.content || [];
+    const converter = new showdown.Converter();
+    const htmlContent = converter.makeHtml(markdownContent);
+    const contentContainer = document.createElement('div');
+    contentContainer.innerHTML = htmlContent;
+    const elementsToAppend = [chapterSelect, chapterHeader, contentContainer];
+    this.chapterContainer.innerHTML = '';
+    this.chapterContainer.append(...elementsToAppend);
+    const returnButton = this.createElementWithText('button', 'Return to Volume Select');
     returnButton.addEventListener('click', () => {
       this.volumeCardVisible = true;
+      this.currentChapter = '';
     });
-    chapterContainer.appendChild(returnButton);
+    this.chapterContainer.appendChild(returnButton);
   }
-}  
-const state = new NovelState("Chapter 1");
-const chapterContainer = document.createElement('div');
-chapterContainer.className = 'chapter';
-document.getElementById('dark-overlay').appendChild(chapterContainer);
-function createElementWithText(tag, text) {
-  const element = document.createElement(tag);
-  element.textContent = text;
-  return element;
-}
-export function getWordCount(paragraphs) {
-  if (Array.isArray(paragraphs)) {
-    return paragraphs.reduce((count, paragraph) => {
-      const words = paragraph.trim().split(' ');
-      return count + words.length;
-    }, 0);
-  }
-  return 0;
-}
+} 
+const state = new NovelState("第1章", "Volume 1");
 state.renderContent();

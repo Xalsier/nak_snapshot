@@ -11,7 +11,7 @@ const trivia = [
   "<span class='highlight-3'>24544</span>/<span class='highlight-2'>34%</span>\nA lunar dating system that tracks\nthe <span class='highlight-3'>month</span> and <span class='highlight-2'>lumination</span>.",
   "Placeholder Trivia 3",
 ];
-const announcementTrivia = "<span class='highlight-1'>The webnovel site is still in construction! \nV.0.5.5\nTried to patch word count</span>";
+const announcementTrivia = "<span class='highlight-1'>The webnovel site is still in construction! \nV.0.5.6\nWebnovel can now handle more than one volume.</span>";
 let isBgImageLoaded = false; // Flag for background image load status
 function init() {
   const contentWarningToggle = document.querySelector('#content-warning-toggle');

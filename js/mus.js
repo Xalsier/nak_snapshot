@@ -8,14 +8,28 @@ document.addEventListener("DOMContentLoaded", function() {
     var fadeOutInterval;
     var fadeInInterval;
     var storedTime = 0;
+    var delayTimer;
+
     function toggleFooter() {
       var calendarChecked = calendarToggle.checked;
       var darkOverlayChecked = darkOverlayToggle.checked;
       footerToggle.checked = !(calendarChecked || darkOverlayChecked);
+    
+      // Clear the previous timer if it exists
+      if (delayTimer) {
+        clearTimeout(delayTimer);
+      }
+    
       if (isPlaying) {
         fadeOutAudio();
       } else {
-        fadeInAudio();
+        // Start a new delay timer
+        delayTimer = setTimeout(function() {
+          // Check if the state has changed
+          if (!calendarToggle.checked && !darkOverlayToggle.checked) {
+            fadeInAudio();
+          }
+        }, 2000);  // Adjust this delay to the value you want
       }
     }
     function fadeOutAudio() {

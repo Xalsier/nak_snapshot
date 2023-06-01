@@ -19,32 +19,6 @@
     <script src="./js/trv.js" async></script>
     <script src="./js/cal.js" async></script>
     <script src="./js/par.js" async></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        var calendarToggle = document.getElementById("cal-toggle");
-        var darkOverlayToggle = document.getElementById("dark-mode-toggle");
-        var footerToggle = document.getElementById("toggle-footer");
-        var audio = document.getElementById("background-music");
-        var startTime = 1;
-        function toggleFooter() {
-          var calendarChecked = calendarToggle.checked;
-          var darkOverlayChecked = darkOverlayToggle.checked;
-    
-          if (!calendarChecked && !darkOverlayChecked) {
-            footerToggle.checked = !footerToggle.checked;
-            setTimeout(function() {
-              audio.currentTime = startTime;
-              audio.play();
-            }, 1000);
-          } else {
-            footerToggle.checked = false;
-            audio.pause();
-          }
-        }
-        calendarToggle.addEventListener("change", toggleFooter);
-        darkOverlayToggle.addEventListener("change", toggleFooter);
-      });
-    </script>
   </head>
   <body> 
     <input type="checkbox" id="content-warning-toggle" style="display: none;">
@@ -117,6 +91,7 @@
           rel="noopener">Andy Warner</a>.
     </footer>
     <label id="help-button" for="toggle-footer" aria-label="Toggle footer" style="display: none;"></label>
-    <audio id="background-music" src="mus.mp3" loop></audio>    
+    <audio id="background-music" src="mus.mp3" loop></audio>
+    <script src="./js/mus.js"></script>    
 </body>
 </html>

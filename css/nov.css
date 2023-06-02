@@ -129,3 +129,27 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .chapter-nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.715)000;
+    padding: 10px;
+    z-index: 999;
+  }
+  
+  .chapter {
+    margin-top: 60px; /* Add margin to push the content below the fixed navigation container */
+  }
+  .content-warning-text {
+    text-align: center;
+  }
+  
+  .content-warning-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  

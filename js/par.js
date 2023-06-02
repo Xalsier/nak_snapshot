@@ -108,52 +108,81 @@ class NovelState {
       this.chapterContainer.appendChild(contentWarning);
       return;
     }
-  
+
     if (!this._volumeCardVisible) {
       const volumeData = novel.find(
         (volume) => volume[Object.keys(volume)[0]].title === this._currentVolume
       );
-  
+
       if (volumeData) {
-        const chapter = volumeData[Object.keys(volumeData)[0]].chapters.find(
+        const chapterIndex = volumeData[Object.keys(volumeData)[0]].chapters.findIndex(
           (chapter) => chapter.title === this._currentChapter
         );
-  
-        if (chapter) {
+
+        if (chapterIndex !== -1) {
           const converter = new showdown.Converter();
-          const htmlContent = converter.makeHtml(chapter.content);
+          const htmlContent = converter.makeHtml(
+            volumeData[Object.keys(volumeData)[0]].chapters[chapterIndex].content
+          );
           const contentContainer = document.createElement('div');
           contentContainer.innerHTML = htmlContent;
-  
-          this.chapterContainer.innerHTML = '';
-          this.chapterContainer.appendChild(contentContainer);
-  
+
+          const chapterNavContainer = document.createElement('div');
+          chapterNavContainer.className = 'chapter-nav-container';
+
           const returnButton = createElementWithText('button', 'Return to Volume Select');
           returnButton.addEventListener('click', () => {
             this._volumeCardVisible = true;
             this.renderChapterContent();
           });
+          chapterNavContainer.appendChild(returnButton);
+
           const chapterSelect = document.createElement('select');
           const defaultOption = createElementWithText('option', 'Select a chapter');
           defaultOption.value = '';
           chapterSelect.appendChild(defaultOption);
-          for (const chapterItem of volumeData[Object.keys(volumeData)[0]].chapters) {
-            const option = createElementWithText('option', chapterItem.title);
-            option.value = chapterItem.title;
+
+          const chapters = volumeData[Object.keys(volumeData)[0]].chapters;
+          for (let i = 0; i < chapters.length; i++) {
+            const option = createElementWithText('option', chapters[i].title);
+            option.value = chapters[i].title;
             chapterSelect.appendChild(option);
           }
-          chapterSelect.value = chapter.title;
+
+          chapterSelect.value = this._currentChapter;
           chapterSelect.addEventListener('change', (event) => {
             if (event.target.value !== '') {
               this.currentChapter = event.target.value;
             }
           });
-          this.chapterContainer.appendChild(chapterSelect);
-            this.chapterContainer.appendChild(returnButton);
-            return;
-          }
+
+          const previousButton = createElementWithText('button', 'Previous Chapter');
+          previousButton.addEventListener('click', () => {
+            const previousIndex = chapterIndex - 1;
+            if (previousIndex >= 0) {
+              this.currentChapter = chapters[previousIndex].title;
+            }
+          });
+
+          const nextButton = createElementWithText('button', 'Next Chapter');
+          nextButton.addEventListener('click', () => {
+            const nextIndex = chapterIndex + 1;
+            if (nextIndex < chapters.length) {
+              this.currentChapter = chapters[nextIndex].title;
+            }
+          });
+
+          chapterNavContainer.appendChild(chapterSelect);
+          chapterNavContainer.appendChild(previousButton);
+          chapterNavContainer.appendChild(nextButton);
+
+          this.chapterContainer.innerHTML = '';
+          this.chapterContainer.appendChild(chapterNavContainer);
+          this.chapterContainer.appendChild(contentContainer);
+          return;
         }
       }
+    }
     this.chapterContainer.innerHTML = '';
     if (this._contentWarningAccepted) {
       for (const volume of novel) {
@@ -165,6 +194,7 @@ class NovelState {
   }
 }
 
+
 function createElementWithText(tag, text) {
   const element = document.createElement(tag);
   element.textContent = text;
@@ -172,15 +202,32 @@ function createElementWithText(tag, text) {
 }
 
 function createContentWarning(acceptHandler, declineHandler) {
-  const contentWarning = createElementWithText('div', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
-  contentWarning.className = 'content-warning-2';
+  const contentWarning = document.createElement('div');
+
+  const contentText = createElementWithText('div', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+  contentText.className = 'content-warning-text';
+
+  const buttonContainer = document.createElement('div');
+  buttonContainer.className = 'content-warning-buttons';
+
   const acceptButton = createElementWithText('button', 'Yes');
   acceptButton.addEventListener('click', acceptHandler);
+
   const declineButton = createElementWithText('button', 'No');
   declineButton.addEventListener('click', declineHandler);
-  contentWarning.append(acceptButton, declineButton);
+
+  buttonContainer.appendChild(acceptButton);
+  buttonContainer.appendChild(declineButton);
+
+  contentWarning.appendChild(contentText);
+  contentWarning.appendChild(document.createElement('br'));
+  contentWarning.appendChild(buttonContainer);
+
   return contentWarning;
 }
+
+
+
 
 function createVolumeCard(volumeData, state) {
   const volumeCard = document.createElement('div');

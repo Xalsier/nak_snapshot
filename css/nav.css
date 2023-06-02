@@ -34,7 +34,7 @@ nav {
   transition: transform 0.3s ease;
 }
 
-#dark-mode-button {
+#webnovel-button {
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -44,19 +44,19 @@ nav {
   transition: transform 0.3s ease;
 }
 
-#cal-toggle-button:focus, #help-button:focus, #dark-mode-button:focus {
+#cal-toggle-button:focus, #help-button:focus, #webnovel-button:focus {
   outline: none;
 }
 
 #cal-toggle:checked ~ nav #cal-toggle-button,
 #toggle-footer:checked ~ nav #help-button,
-#dark-mode-toggle:checked ~ nav #dark-mode-button {
+#webnovel-toggle:checked ~ nav #webnovel-button {
   transform: scale(1);
 }
 
 #cal-toggle:not(:checked) ~ nav #cal-toggle-button,
 #toggle-footer:not(:checked) ~ nav #help-button,
-#dark-mode-toggle:not(:checked) ~ nav #dark-mode-button {
+#webnovel-toggle:not(:checked) ~ nav #webnovel-button {
   transform: scale(0.5);
 }
 
@@ -68,6 +68,6 @@ nav {
   transform: translate(-50%, -50%) translateY(0) rotateY(0);
 }
 
-#dark-mode-toggle:checked ~ #dark-overlay {
+#webnovel-toggle:checked ~ #dark-overlay {
   opacity: 1;
 }

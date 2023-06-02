@@ -1,9 +1,9 @@
 const novel = [];
+const converter = new showdown.Converter();
+const div = document.createElement('div');
 
 function getWordCount(paragraphs) {
   if (!Array.isArray(paragraphs)) return 0;
-  const converter = new showdown.Converter();
-  const div = document.createElement('div');
   return paragraphs.reduce((count, paragraph) => {
     div.innerHTML = converter.makeHtml(paragraph);
     const text = div.textContent || div.innerText || '';
@@ -18,13 +18,25 @@ async function fetchChapterContent(chapter) {
       const markdownContent = await markdownResponse.text();
       return markdownContent;
     } else {
-      console.error('Error loading chapter:', markdownResponse.status); // Log the error loading the chapter
-      return null; // Return null if the chapter file cannot be loaded
+      throw new Error(`Error loading chapter: ${markdownResponse.status}`);
     }
   } catch (error) {
-    console.error('Error fetching chapter:', error); // Log the error fetching the chapter
-    return null; // Return null if there is an error fetching the chapter
+    throw new Error(`Error fetching chapter: ${error}`);
   }
+}
+
+async function fetchAllChapters(chapters) {
+  return await Promise.all(chapters.map(chapter => {
+    if (chapter.title && chapter.filePath) {
+      return fetchChapterContent(chapter)
+        .then(content => {
+          chapter.content = content;
+          return chapter;
+        });
+    } else {
+      throw new Error('Invalid chapter data.');
+    }
+  }));
 }
 
 async function fetchNovelData() {
@@ -37,22 +49,15 @@ async function fetchNovelData() {
       } else {
         novel.push(data);
       }
-      for (const volume of novel) {
+      await Promise.all(novel.map(async volume => {
         const volumeData = volume[Object.keys(volume)[0]];
         if (!Array.isArray(volumeData.chapters)) {
           throw new Error('Invalid chapter data for volume: ' + volumeData.title);
         }
-        for (const chapter of volumeData.chapters) {
-          if (chapter.title && chapter.filePath) {
-            const markdownContent = await fetchChapterContent(chapter); // Await the fetchChapterContent function
-            chapter.content = markdownContent;
-          } else {
-            throw new Error('Invalid chapter data for volume: ' + volumeData.title);
-          }
-        }
+        await fetchAllChapters(volumeData.chapters);
         const wordCount = getWordCount(volumeData.chapters.map((chapter) => chapter.content));
         volumeData.totalWordCount = wordCount;
-      }
+      }));
     } else {
       throw new Error('Request failed with status ' + response.status);
     }
@@ -101,7 +106,7 @@ class NovelState {
           this.contentWarningAccepted = true;
         },
         () => {
-          document.getElementById('dark-mode-toggle').click();
+          document.getElementById('webnovel-toggle').click();
         }
       );
       this.chapterContainer.innerHTML = '';
@@ -274,6 +279,6 @@ const state = new NovelState();
 fetchNovelData()
   .then(() => {
     console.log('Novel data fetched:', novel);
-    state.renderChapterContent(); // Move the renderChapterContent() call here
+    state.renderChapterContent();
   })
   .catch((error) => console.error('Error in fetchNovelData:', error));

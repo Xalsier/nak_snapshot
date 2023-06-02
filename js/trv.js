@@ -5,13 +5,13 @@ const FINAL_LOADING_MS = 1000; // 1 second for final loading from 80% to 100%
 const SYNC_DELAY_MS = 1000;
 const SECONDS_PER_HOUR = 3600;
 const SECONDS_PER_MINUTE = 60;
-const BACKGROUND_IMAGE_PATH = "./he3.jpg";
+const BACKGROUND_IMAGE_PATH = "../img/he3.jpg";
 const trivia = [
   "Placeholder Trivia 1",
   "<span class='highlight-3'>24544</span>/<span class='highlight-2'>34%</span>\nA lunar dating system that tracks\nthe <span class='highlight-3'>month</span> and <span class='highlight-2'>lumination</span>.",
   "Placeholder Trivia 3",
 ];
-const announcementTrivia = "<span class='highlight-1'>The webnovel site is still in construction! \nV.0.5.7\nAdded Next Chapter Buttons</span>";
+const announcementTrivia = "<span class='highlight-1'>The webnovel site is still in construction! \nV.0.6.0\nFixed Console Errors, Webnovel stuff works.</span>";
 let isBgImageLoaded = false; // Flag for background image load status
 function init() {
   const contentWarningToggle = document.querySelector('#content-warning-toggle');

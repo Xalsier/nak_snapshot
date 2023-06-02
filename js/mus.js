@@ -1,5 +1,5 @@
 const calendarToggle = document.getElementById("cal-toggle");
-const darkOverlayToggle = document.getElementById("dark-mode-toggle");
+const darkOverlayToggle = document.getElementById("webnovel-toggle");
 const footerToggle = document.getElementById("toggle-footer");
 const audio = document.getElementById("background-music");
 const startTime = 1;

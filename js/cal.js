@@ -1,13 +1,9 @@
-事 = {
-  "2023-05-02": {"type": 1},
-};
-// Code Golfed Calendar // < 1000 Characters //
 日 = (e, n) => new Date(e, n, 1).getDay();
 古 = (e, n, a) => new Date(e, n, a) < Date.now();
 隠 = _ => 面 && (面.innerHTML = "");
-獲 = _ => 事; // Calendar data is already available locally (No need for Fetch API)
+獲 = _ => fetch("cal_dat.json").then(response => response.json()); // Fetch the calendar data from cal_dat.json
 設 = (e, n) => {(文 = 書[找]("cmy")) && (文.innerHTML = 12 * e + n + 1);};
-造 = (e, n, a, s) => {
+造 = async (e, n, a, s) => {
   (d = 書[元]("div")),
     (i = 日(a, s)),
     (d[名] = "cc"),
@@ -30,7 +26,7 @@
 找 = "getElementById"; // DOM Element Variable
 旧 = (書 = document)[找]("pm"); // Previous Month
 新 = 書[找]("nm"); // Next Month
-(更 = e => {
+(更 = async e => {
   表示.setMonth(表示.getMonth() + e); // Adjust the displayed month
   年 = 表示.getFullYear(); // Get the year of the displayed month
   月 = 表示.getMonth(); // Get the displayed month
@@ -38,7 +34,8 @@
   設(年, 月); // Update the displayed year and month
   根 = 書[找]("ca"); // Get the calendar element
   根.innerHTML = ""; // Clear the calendar container
-  根.appendChild(造(獲(), 数, 年, 月)); // Append the newly generated month to the calendar container
+  const calendarData = await 獲(); // Fetch the calendar data
+  根.appendChild(await 造(calendarData, 数, 年, 月)); // Append the newly generated month to the calendar container
 })(0); // Immediately invoke the function with 0, causing the current month to be displayed.
 旧.onclick = _ => 更(-1); // Go to Previous Month
 新.onclick = _ => 更(1); // Go to Next Month

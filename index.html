@@ -1,97 +1,80 @@
 <!DOCTYPE html>
   <html lang="en">
-  <head>
-    <title>Na'kioku</title>
-    <link rel="shortcut icon" type="image/x-icon" href="../img/fav.ico">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <meta name="description" content="Official webpage for the Na'kioku webnovel.">
-    <meta name="author" content="Xalsier Kitsune">
-    <meta name="robots" content="index, follow">
-    <link rel="stylesheet" href="../css/sty.css">
-    <link rel="stylesheet" href="../css/cwf.css">
-    <link rel="stylesheet" href="../css/fot.css">
-    <link rel="stylesheet" href="../css/cal.css">
-    <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/nov.css">
-    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js" 
-            onerror="this.onerror=null;
-            this.src='./js/lib/showdown.js';"></script>
-    <script src="./js/cal.js" async></script>
-    <script src="./js/par.js" async></script>
-    <script src="./js/mus.js" async></script> 
-  </head>
-  <body>
-    <noscript>
-      <p>Your browser does not support JavaScript or it is disabled. Please enable JavaScript to view the calendar and webnovel.</p>
-    </noscript> 
-    <input type="checkbox" id="cal-toggle" style="display: none;" checked>
-    <input type="checkbox" id="toggle-footer" style="display: none;">
-    <input type="checkbox" id="webnovel-toggle" style="display: none;">
-    <nav>
-      <div></div> <!-- Empty div for first column -->
-      <div class="button-group">
-        <label for="cal-toggle" id="cal-toggle-button" aria-label="Toggle calendar"></label>
-        <label for="webnovel-toggle" id="webnovel-button" aria-label="Toggle webnovel"></label>     
-      </div>
-      <div></div> <!-- Empty div for third column -->
-    </nav>
-    <div id="cal-item">
-      <div id="cmy"></div>
-      <div id="wd" lang="ja">
-        <div class="cw">
-          <ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>
+    <head>
+      <title>Na'kioku</title>
+      <link rel="shortcut icon" type="image/x-icon" href="../img/fav.ico">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
+      <meta name="description" content="Official webpage for the Na'kioku webnovel.">
+      <meta name="author" content="Xalsier Kitsune">
+      <meta name="robots" content="index, follow">
+      <link rel="stylesheet" href="../css/sty.css">
+      <link rel="stylesheet" href="../css/fot.css">
+      <link rel="stylesheet" href="../css/cal.css">
+      <link rel="stylesheet" href="../css/nav.css">
+      <link rel="stylesheet" href="../css/nov.css">
+      <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js" onerror="this.onerror=null;this.src='./js/lib/showdown.js';"></script>
+      <script src="./js/cal.js" async></script>
+      <script src="./js/par.js" async></script>
+      <script src="./js/mus.js" async></script> 
+    </head>
+    <body>
+      <noscript>
+        <p>Your browser does not support JavaScript or it is disabled. Please enable JavaScript to view the calendar and webnovel.</p>
+      </noscript> 
+      <input type="checkbox" id="cal-toggle" style="display: none;" checked>
+      <input type="checkbox" id="toggle-footer" style="display: none;">
+      <input type="checkbox" id="webnovel-toggle" style="display: none;">
+      <nav>
+        <div class="button-group">
+          <label for="cal-toggle" class="nav-button" id="cal-toggle-button" aria-label="Toggle calendar"></label>
+          <label for="webnovel-toggle" class="nav-button" id="webnovel-button" aria-label="Toggle webnovel"></label>    
         </div>
-        <div class="cw">
-          <ruby>月<rp>(</rp><rt>げつ</rt><rp>)</rp></ruby>
+      </nav>      
+      <div id="cal-item">
+        <div id="cmy"></div>
+        <div id="wd" lang="ja">
+          <div class="cw"><ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby></div>
+          <div class="cw"><ruby>月<rp>(</rp><rt>げつ</rt><rp>)</rp></ruby></div>
+          <div class="cw"><ruby>火<rp>(</rp><rt>か</rt><rp>)</rp></ruby></div>
+          <div class="cw"><ruby>水<rp>(</rp><rt>すい</rt><rp>)</rp></ruby></div>
+          <div class="cw"><ruby>木<rp>(</rp><rt>もく</rt><rp>)</rp></ruby></div>
+          <div class="cw"><ruby>金<rp>(</rp><rt>きん</rt><rp>)</rp></ruby></div>
+          <div class="cw"><ruby>土<rp>(</rp><rt>ど</rt><rp>)</rp></ruby></div>
         </div>
-        <div class="cw">
-          <ruby>火<rp>(</rp><rt>か</rt><rp>)</rp></ruby>
+        <div id="cal-box"><div class="cal-window"><div id="ca"></div></div></div>
+          <button id="pm" aria-label="Previous month"></button>
+          <button id="nm" aria-label="Next month"></button>
         </div>
-        <div class="cw">
-          <ruby>水<rp>(</rp><rt>すい</rt><rp>)</rp></ruby>
-        </div>
-        <div class="cw">
-          <ruby>木<rp>(</rp><rt>もく</rt><rp>)</rp></ruby>
-        </div>
-        <div class="cw">
-          <ruby>金<rp>(</rp><rt>きん</rt><rp>)</rp></ruby>
-        </div>
-        <div class="cw">
-          <ruby>土<rp>(</rp><rt>ど</rt><rp>)</rp></ruby>
-        </div>
-      </div>
-        <div id="cal-box">
-          <div class="cal-window"><div id="ca"></div></div>
-        </div>
-        <button id="pm" aria-label="Previous month"></button>
-        <button id="nm" aria-label="Next month"></button>
-      </div>
-    <div id="dark-overlay"></div> 
-    <footer id="footerContainer">
-        <span>Na'kioku © 2023</span>
-        <a class="red-link" 
-          target="_blank" 
-          rel="noopener" 
-          href="https://twitter.com/Xalsier">Xalsier Kitsune</a>. 
-        <span>All rights reserved.</span>
-        <span>Background concept art by:</span> 
-        <a href="https://twitter.com/dimitridstvsk" 
-          class="red-link" 
-          target="_blank" 
-          rel="noopener">Dimitri Dostoiévski</a>.
-        <br>
-        <a href="https://youtu.be/RNh5SX0UObY" 
-          class="red-link" 
-          target="_blank" 
-          rel="noopener">¿De vuelta a casa de nuevo? </a>
-        <span>Perfomed by: </span>
-        <a href="https://open.spotify.com/artist/59ByQYuLD6LbpG41dhxe8W#42" 
-          class="red-link" 
-          target="_blank" 
-          rel="noopener">Andy Warner</a>.
-    </footer>
-    <label id="help-button" for="toggle-footer" aria-label="Toggle footer" style="display: none;"></label>
-    <audio id="background-music" src="mus.mp3" loop></audio>   
-</body>
-</html>
+      <div id="dark-overlay"></div>
+      <div id="audio-controls">
+        <button id="play-button" class="control-button visible">▶</button>
+        <button id="pause-button" class="control-button">❚❚</button>
+      </div>       
+      <footer id="footerContainer">
+          <span>Na'kioku © 2023</span>
+          <a class="red-link" 
+            target="_blank" 
+            rel="noopener" 
+            href="https://twitter.com/Xalsier">Xalsier Kitsune</a>. 
+          <span>All rights reserved.</span>
+          <span>Background concept art by:</span> 
+          <a href="https://twitter.com/dimitridstvsk" 
+            class="red-link" 
+            target="_blank" 
+            rel="noopener">Dimitri Dostoiévski</a>.
+          <br>
+          <a href="https://youtu.be/RNh5SX0UObY" 
+            class="red-link" 
+            target="_blank" 
+            rel="noopener">¿De vuelta a casa de nuevo? </a>
+          <span>Perfomed by: </span>
+          <a href="https://open.spotify.com/artist/59ByQYuLD6LbpG41dhxe8W#42" 
+            class="red-link" 
+            target="_blank" 
+            rel="noopener">Andy Warner</a>.
+      </footer>
+      <label id="help-button" for="toggle-footer" aria-label="Toggle footer" style="display: none;"></label>
+      <audio id="background-music" src="mus.mp3" loop></audio>   
+    </body>
+  </html>

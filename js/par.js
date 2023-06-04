@@ -41,7 +41,7 @@ async function fetchAllChapters(chapters) {
 
 async function fetchNovelData() {
   try {
-    const response = await fetch('../vol_dat.json');
+    const response = await fetch('../dat/vol.json');
     if (response.ok) {
       const data = await response.json();
       if (Array.isArray(data)) {

@@ -1,7 +1,7 @@
 nav {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  justify-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   width: 100%;
   bottom: 20px; /* Adjusted from top: 10px; to bottom: 10px; */
@@ -10,41 +10,32 @@ nav {
 
 .button-group {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  justify-content: center;
+  gap: 20px; /* adjust as necessary */
+}
+
+.nav-button {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
 #cal-toggle-button {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
   background-color: #ff4d4d;
-  border-radius: 50%;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
 }
 
 #help-button {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
   background-color: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
 }
 
 #webnovel-button {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
   background-color: #55f9fc;
-  border-radius: 50%;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
 }
 
-#cal-toggle-button:focus, #help-button:focus, #webnovel-button:focus {
+.nav-button:focus {
   outline: none;
 }
 

@@ -1,7 +1,7 @@
 日 = (e, n) => new Date(e, n, 1).getDay();
 古 = (e, n, a) => new Date(e, n, a) < Date.now();
 隠 = _ => 面 && (面.innerHTML = "");
-獲 = _ => fetch("cal_dat.json").then(response => response.json()); // Fetch the calendar data from cal_dat.json
+獲 = _ => fetch("../dat/cal.json").then(response => response.json()); // Fetch the calendar data from cal_dat.json
 設 = (e, n) => {(文 = 書[找]("cmy")) && (文.innerHTML = 12 * e + n + 1);};
 造 = async (e, n, a, s) => {
   (d = 書[元]("div")),

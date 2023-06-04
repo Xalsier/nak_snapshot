@@ -3,7 +3,7 @@
     "Volume 1": {
       "title": "Volume 1 Title",
       "synopsis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida.",
-      "coverArtUrl": "../img/nov.jpg",
+      "coverArtUrl": "https://cdn.discordapp.com/attachments/1098740627191107594/1114758367152439366/FcaH22yXkAECD4Y.png",
       "chapters": [
         {"title": "第1章", "filePath": "../md/nester.md"},
         {"title": "第2章", "filePath": "../md/zsasz.md"}
